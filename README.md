@@ -4,15 +4,11 @@ Source:
   <img src="Assets/readme/both-walkies-main.jpg" alt="Both ESP32 walkie talkies side by side" width="900">
 </p>
 
-# ESP32 ESP-NOW Walkie Talkies
 
-ESP32 walkie talkies encased in 3D-printed cases using I2S audio hardware, OLED screens, recycled lithium batteries, external antennas, and ESP-IDF firmware. This repository is meant to hold everything required for studying, tweaking, duplicating, and evolving the project: firmware code, wiring diagrams, bill of materials, images, and enclosure models.
 
-The folder [`Walkie Talkie CAD files`](Walkie%20Talkie%20CAD%20files/) is set aside for future enclosures, printed parts, mounts, and case modifications, so that other builders can copy or remix the physical design.
 
 ## Project Description
 
-This is the second major generation of a customized walkie-talkie system. The radios communicate directly with each other via ESP-NOW protocol without any Wi-Fi router in the middle, and the firmware is written in C using the Espressif ESP-IDF framework to run faster and more reliably than the first prototype, which was running MicroPython.
 
 The current implementation utilizes the ESP32-U type of board with external antenna, OLED screen, I2S microphone, I2S speaker amplifier, volume potentiometer, GPIO buttons, laser and LED. The aim of this project is to create a compact two-way voice communicator with phone-like user interface, channel selection, link check, battery monitoring, lights control and experimental long-distance ESP-NOW voice radio.
 
@@ -27,7 +23,6 @@ The current implementation utilizes the ESP32-U type of board with external ante
 * Weak link redundancy which duplicates packets at distance with bad range and de-duplicates received packets to make range testing easier.
 * Inbuilt flash range telemetry with JSON data collection to log range test without computer attached in the field.
 * OLED interface for channels, link, signal, battery, volume, RX/PTT status, application menu, settings, lights control and kid mode.
-* Separate black and grey walkie firmware to support different GPIO wiring in the two physical implementations.
 * Firmware, wiring information, build pictures and CAD documentation to fork and evolve this project.
 
 ## More Than a Walkie Talkie
@@ -42,7 +37,7 @@ This firmware supports an `RCAR` application to control an RC or tank drive trai
 
 ## Walkie Talkie Hardware
 
-This project uses a custom 3D-printed walkie-talkie enclosure housing an ESP32 digital audio hardware system.
+I have used a custom 3D-printed walkie-talkie enclosure housing an ESP32 digital audio hardware system.
 
 <p align="center">
   <img src="Assets/readme/grey-walkie-only.jpg" alt="Grey ESP32 walkie talkie" width="420">
@@ -63,7 +58,6 @@ This project uses a custom 3D-printed walkie-talkie enclosure housing an ESP32 d
 * Laser module operated on 3.3 V as manual output and part of lights app.
 * Voltage divider to feed ADC pin for battery voltage measurement.
 
-Important battery warning: prototype batteries were salvaged from a discarded vape lying on the ground. It is part of project history, but it is not a safety recommendation. When building your own device, use reliable lithium cell with protection circuitry, charging hardware, proper insulation and enclosure. Do not salvage unknown, punctured, swollen or otherwise damaged lithium cells.
 
 ## Circuit Diagram
 
@@ -119,7 +113,6 @@ Black walkie provides GPIO1 and GPIO3 for `RCAR` app:
 | Left drivetrain servo signal  |  GPIO1 / UART0 TX | 50 Hz PWM signal in `RCAR` mode |
 | Right drivetrain servo signal |  GPIO3 / UART0 RX | 50 Hz PWM signal in `RCAR` mode |
 
-GPIO1/GPIO3 are UART0 pins, so they will be taken over by PWM signal generation only in `RCAR` app mode. Do not power MG996 servos from ESP32 3.3 V pin. Use separate 5 to 6 V power supply able to power your motor and connect servo ground to walkie/ESP32 ground.
 
 ## Internal Build: Grey Walkie
 
@@ -127,7 +120,6 @@ GPIO1/GPIO3 are UART0 pins, so they will be taken over by PWM signal generation 
   <img src="Assets/readme/grey-walkie-internal.jpg" alt="Grey walkie internal circuitry" width="900">
 </p>
 
-The grey walkie is the second version. It has clean wiring and soldering, where thinner wires are used between different modules. This helps reduce congestion inside and makes it easier to look through wires, check connections, and find potential failures.
 
 Compared to the first iteration, the grey version has better designed layout and less mechanical stress on thin soldering points.
 
@@ -141,7 +133,6 @@ In addition, clean wiring also helps with debugging of audio issues. Digital mic
 
 The black walkie is the first version with ESP32. It works, but it has quite thick internal wiring and thus congestion inside the walkie housing which makes build difficult and harder to inspect.
 
-Moreover, black walkie revealed the necessity of board profiles in the firmware code. The PTT button and LED pin assignment is switched, and the top-left/top-right buttons are also switched. In order to avoid rewiring the units, the firmware supports two different physical layouts.
 
 ## Project History
 
@@ -161,15 +152,7 @@ Every second, the walkie produces a small JSON line of telemetry about RSSI, lin
 
 ## Firmware Features
 
-The firmware is an ESP-IDF based project, intended to work with the Espressif VS Code extension and command-line tool `idf.py`.
 
-### Firmware Showcase
-
-The firmware makes the 3D-printed handheld much more than a radio. It is a menu-driven ESP32 device with voice, controls, telemetry, lights and Wi-Fi applications in the future.
-
-Current firmware version: `0.5.4`
-
-Current firmware features:
 
 * 20 logical walkie-talkie channels, selected from the main PTT screen;
 * Push-to-talk ESP-NOW voice mode with channel-matched audio packets;
@@ -200,7 +183,6 @@ Planned or experimental firmware ideas:
 * Lights app/light playground with strobe, target selection, rate, constant LED, constant 3.3 V laser and preset patterns;
 * Kid mode locked to channel 1, can be exited with holding OK for 2 seconds.
 
-Below screenshots are taken directly from the real OLED of walkie-talkie, not from the simulator. They show current firmware UI running on the hardware.
 
 <p align="center">
   <img src="Assets/PTT%20home%20screen%20GUI.png" alt="Real OLED PTT home screen GUI" width="420">
