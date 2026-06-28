@@ -1,46 +1,48 @@
+Source: 
+
 <p align="center">
   <img src="Assets/readme/both-walkies-main.jpg" alt="Both ESP32 walkie talkies side by side" width="900">
 </p>
 
 # ESP32 ESP-NOW Walkie Talkies
 
-Custom ESP32 walkie talkies built into 3D-printed casings with I2S audio hardware, OLED screens, reclaimed lithium batteries, external antennas, and custom ESP-IDF firmware. This repository is intended to include everything needed to study, modify, rebuild, and improve the project: firmware, wiring documentation, bill of materials, photos, and CAD/enclosure files.
+ESP32 walkie talkies encased in 3D-printed cases using I2S audio hardware, OLED screens, recycled lithium batteries, external antennas, and ESP-IDF firmware. This repository is meant to hold everything required for studying, tweaking, duplicating, and evolving the project: firmware code, wiring diagrams, bill of materials, images, and enclosure models.
 
-The folder [`Walkie Talkie CAD files`](Walkie%20Talkie%20CAD%20files/) is reserved for enclosure models, printable parts, brackets, mounts, and future case revisions, so other builders can reproduce or remix the physical design.
+The folder [`Walkie Talkie CAD files`](Walkie%20Talkie%20CAD%20files/) is set aside for future enclosures, printed parts, mounts, and case modifications, so that other builders can copy or remix the physical design.
 
-## Project Overview
+## Project Description
 
-This is the second major version of a custom digital walkie-talkie system. The radios communicate directly with each other using ESP-NOW instead of a Wi-Fi router, and the firmware is written in C with Espressif ESP-IDF so it can run much faster and more predictably than the original MicroPython prototype.
+This is the second major generation of a customized walkie-talkie system. The radios communicate directly with each other via ESP-NOW protocol without any Wi-Fi router in the middle, and the firmware is written in C using the Espressif ESP-IDF framework to run faster and more reliably than the first prototype, which was running MicroPython.
 
-The current build uses an ESP32-U style board with an external antenna, a small OLED display, an I2S microphone, an I2S speaker amplifier, a potentiometer for volume, hardware buttons, a laser, and an LED. The goal is a compact two-way voice communicator with a phone-like interface, channel selection, link status, battery monitoring, lights controls, and experimental long-range ESP-NOW audio.
+The current implementation utilizes the ESP32-U type of board with external antenna, OLED screen, I2S microphone, I2S speaker amplifier, volume potentiometer, GPIO buttons, laser and LED. The aim of this project is to create a compact two-way voice communicator with phone-like user interface, channel selection, link check, battery monitoring, lights control and experimental long-distance ESP-NOW voice radio.
 
-### Highlights
+### Features
 
-- Direct peer-to-peer ESP-NOW voice communication with no router or access point required.
-- External antenna ESP32 hardware for improved range compared with PCB antenna modules.
-- Long-range ESP-NOW radio configuration with maximum requested ESP32 transmit power and ESP32 LR PHY peer rate settings.
-- Designed for up to about 1 mile line-of-sight range under ideal outdoor conditions, with real range depending heavily on antenna placement, interference, obstacles, body blocking, and battery voltage.
-- 16 kHz mono voice capture with IMA ADPCM compression so each 20 ms audio frame fits in one ESP-NOW packet.
-- Jitter buffering and packet-loss concealment to make received voice less choppy when packets arrive unevenly.
-- Adaptive weak-link redundancy that sends duplicate audio packets when range gets rough, then de-duplicates them on receive.
-- Onboard flash range logging with JSON telemetry, so range tests can be recorded without a computer connected in the field.
-- OLED interface with channel, link, signal meter, battery, volume, RX/PTT indicators, app menu, settings, lights controls, and kid mode.
-- Separate black and grey walkie profiles because the two physical builds have slightly different GPIO wiring.
-- Firmware, wiring notes, build photos, and CAD documentation organized so the project can be forked, improved, and rebuilt.
+* Peer-to-peer ESP-NOW voice communications without any router or access point.
+* ESP32 with external antenna hardware for better distance compared with boards with PCB antenna.
+* Configuration of ESP-NOW radio for long distance use with maximal ESP32 TX power and ESP32 LR PHY peer rate settings.
+* Designed for up to 1 mile distance in line-of-sight in outdoor conditions, actual distance will depend heavily on antenna placement, interference, obstacles, body shielding and battery voltage.
+* 16 kHz mono voice capture with IMA ADPCM compression, so each 20 ms of voice is captured and compressed in one ESP-NOW packet.
+* Packet jitter buffer and packet loss concealment to reduce jitters when packets are received unevenly.
+* Weak link redundancy which duplicates packets at distance with bad range and de-duplicates received packets to make range testing easier.
+* Inbuilt flash range telemetry with JSON data collection to log range test without computer attached in the field.
+* OLED interface for channels, link, signal, battery, volume, RX/PTT status, application menu, settings, lights control and kid mode.
+* Separate black and grey walkie firmware to support different GPIO wiring in the two physical implementations.
+* Firmware, wiring information, build pictures and CAD documentation to fork and evolve this project.
 
 ## More Than a Walkie Talkie
 
-Even though the main feature is voice communication, this project is also a handheld ESP32 Wi-Fi controller platform. Because each unit has buttons, a display, audio, battery power, ESP-NOW, and normal Wi-Fi capability, the same hardware can be reused to control other Wi-Fi or IoT projects.
+Despite being mostly a two-way voice communicator, this project can be used as a Wi-Fi/IoT device handheld controller platform. With buttons, display, audio hardware, ESP-NOW radio and regular Wi-Fi capability the same hardware can be re-purposed for controlling IoT/Wi-Fi devices.
 
-The firmware now includes an `RCAR` app for controlling an RC/tank-style drivetrain. The black walkie can drive two MG996-style continuous-rotation servos from GPIO1/GPIO3, while the grey walkie can act as the handheld controller over ESP-NOW. The walkie casing becomes more like a rugged handheld controller with a built-in voice channel.
+This firmware supports an `RCAR` application to control an RC or tank drive train. Black walkie can operate two MG996-type continuous rotation servos via GPIO1 and GPIO3 pins. Grey walkie can serve as the handheld remote over ESP-NOW radio. Walkie enclosure turns out to be a handheld controller with integrated voice channel.
 
 <p align="center">
   <img src="Assets/readme/both-walkies-second.jpg" alt="Second side-by-side photo of both ESP32 walkie talkies" width="900">
 </p>
 
-## Walkie Talkie Components
+## Walkie Talkie Hardware
 
-The project uses a custom 3D-printed walkie-talkie casing built around an ESP32-based digital audio system.
+This project uses a custom 3D-printed walkie-talkie enclosure housing an ESP32 digital audio hardware system.
 
 <p align="center">
   <img src="Assets/readme/grey-walkie-only.jpg" alt="Grey ESP32 walkie talkie" width="420">
@@ -49,75 +51,75 @@ The project uses a custom 3D-printed walkie-talkie casing built around an ESP32-
 
 ### Main Electronics
 
-- ESP32-U class development board with 240 MHz CPU, 4 MB flash, about 512 KB internal SRAM, Wi-Fi, Bluetooth hardware, and an external antenna connector.
-- SSD1306-style OLED display for the full GUI.
-- I2S digital microphone for voice input.
-- I2S speaker output feeding a MAX9875A-style speaker amplifier.
-- Small speaker inside the 3D-printed casing.
-- Potentiometer for analog volume control.
-- Reclaimed 3.85 V nominal lithium battery pack rated around 2000 mAh.
-- Six GPIO push buttons for PTT, OK/select, navigation, back, and apps/settings.
-- LED used as a transmit/status/light output.
-- 3.3 V laser module used as a manual output and as part of the lights app.
-- Voltage divider into an ADC pin for battery measurement.
+* ESP32-U type development board with 240 MHz CPU, 4 MB flash memory, ~512 KB of internal SRAM, Wi-Fi, Bluetooth hardware and external antenna connection.
+* OLED display for full interface.
+* I2S digital microphone for voice input.
+* I2S output feeding MAX9875A type speaker amplifier.
+* Speaker included in 3D-printed enclosure.
+* Volume potentiometer.
+* Reclaimed 3.85 V lithium battery pack with capacity of about 2000 mAh.
+* 6 GPIO push buttons for PTT, OK button, navigation and applications/settings.
+* LED light for status and TX indication.
+* Laser module operated on 3.3 V as manual output and part of lights app.
+* Voltage divider to feed ADC pin for battery voltage measurement.
 
-Important battery note: the prototype batteries were found in a discarded vape on the ground and reused for this build. That is part of the project history, but it is not a safety recommendation. If you build your own, use a known-good lithium cell with a protection circuit, proper charging hardware, insulation, strain relief, and a safe enclosure. Do not reuse unknown, punctured, swollen, or damaged lithium cells.
+Important battery warning: prototype batteries were salvaged from a discarded vape lying on the ground. It is part of project history, but it is not a safety recommendation. When building your own device, use reliable lithium cell with protection circuitry, charging hardware, proper insulation and enclosure. Do not salvage unknown, punctured, swollen or otherwise damaged lithium cells.
 
 ## Circuit Diagram
 
-The high-level circuit diagram shows how the ESP32 connects to the display, I2S audio devices, buttons, analog inputs, LED, laser, and battery measurement circuit.
+The high-level circuit diagram illustrates connections between ESP32, display, I2S audio devices, buttons, analog input, LED, laser, and battery measurement circuit.
 
 <p align="center">
   <img src="Assets/Walkie%20Talkie%20Circuit%20Diagram.png" alt="Walkie talkie circuit diagram" width="900">
 </p>
 
-### Shared Pinout
+### Common Pin Assignment
 
-| Function | ESP32 GPIO | Notes |
-| --- | ---: | --- |
-| OLED SCL | GPIO18 | I2C clock |
-| OLED SDA | GPIO19 | I2C data |
-| Speaker BCLK | GPIO32 | I2S output bit clock |
-| Speaker WS/LRC | GPIO33 | I2S output word select |
-| Speaker DIN | GPIO25 | I2S output data |
-| Microphone BCLK | GPIO16 | I2S input bit clock |
-| Microphone WS | GPIO17 | I2S input word select |
-| Microphone SD | GPIO4 | I2S input data |
-| OK button | GPIO0 | Active low |
-| Bottom-left button | GPIO14 | Active low |
-| Bottom-right button | GPIO15 | Active low |
-| Laser | GPIO21 | 3.3 V laser module output |
-| Volume potentiometer | GPIO34 | ADC input |
-| Battery divider | GPIO35 | ADC input |
+| Function             | ESP32 GPIO | Comments                  |
+| -------------------- | ---------: | ------------------------- |
+| OLED SCL             |     GPIO18 | I2C clock                 |
+| OLED SDA             |     GPIO19 | I2C data                  |
+| Speaker BCLK         |     GPIO32 | I2S output bit clock      |
+| Speaker WS/LRC       |     GPIO33 | I2S output word select    |
+| Speaker DIN          |     GPIO25 | I2S output data           |
+| Microphone BCLK      |     GPIO16 | I2S input bit clock       |
+| Microphone WS        |     GPIO17 | I2S input word select     |
+| Microphone SD        |      GPIO4 | I2S input data            |
+| OK button            |      GPIO0 | Active low                |
+| Bottom-left button   |     GPIO14 | Active low                |
+| Bottom-right button  |     GPIO15 | Active low                |
+| Laser                |     GPIO21 | 3.3 V laser module output |
+| Volume potentiometer |     GPIO34 | ADC input                 |
+| Battery divider      |     GPIO35 | ADC input                 |
 
-### Black and Grey Variant Pinout
+### Black & Grey Variants Pin Assignment
 
-The two walkies are not wired exactly the same, so the firmware has board profiles in `menuconfig`.
+The two walkies are not exactly the same, so the firmware has board profiles in `menuconfig`.
 
-| Function | Black walkie | Grey walkie |
-| --- | ---: | ---: |
-| PTT button | GPIO22 | GPIO23 |
-| LED output | GPIO23 | GPIO22 |
-| Top-left button | GPIO26 | GPIO2 |
-| Top-right button | GPIO2 | GPIO26 |
-| Battery divider | 100k / 100k | 220k / 220k |
-| Default peer | Grey MAC | Black MAC |
+| Function         | Black walkie | Grey walkie |
+| ---------------- | -----------: | ----------: |
+| PTT button       |       GPIO22 |      GPIO23 |
+| LED output       |       GPIO23 |      GPIO22 |
+| Top-left button  |       GPIO26 |       GPIO2 |
+| Top-right button |        GPIO2 |      GPIO26 |
+| Battery divider  |  100k / 100k | 220k / 220k |
+| Default peer     |     Grey MAC |   Black MAC |
 
 Default ESP-NOW peer MAC addresses:
 
-- Black walkie: `A4:F0:0F:66:D2:D0`
-- Grey walkie: `A4:F0:0F:67:BA:1C`
+* Black walkie: `A4:F0:0F:66:D2:D0`
+* Grey walkie: `A4:F0:0F:67:BA:1C`
 
 ### RC Car Expansion Pins
 
-The black walkie exposes GPIO1 and GPIO3 for the `RCAR` app:
+Black walkie provides GPIO1 and GPIO3 for `RCAR` app:
 
-| RC car signal | Black walkie GPIO | Notes |
-| --- | ---: | --- |
-| Left drivetrain servo signal | GPIO1 / UART0 TX | 50 Hz PWM signal in `RCAR` mode |
-| Right drivetrain servo signal | GPIO3 / UART0 RX | 50 Hz PWM signal in `RCAR` mode |
+| RC car signal                 | Black walkie GPIO | Comments                        |
+| ----------------------------- | ----------------: | ------------------------------- |
+| Left drivetrain servo signal  |  GPIO1 / UART0 TX | 50 Hz PWM signal in `RCAR` mode |
+| Right drivetrain servo signal |  GPIO3 / UART0 RX | 50 Hz PWM signal in `RCAR` mode |
 
-GPIO1/GPIO3 are UART0 pins, so they are only taken over by PWM when the `RCAR` app is active. They are signal pins only; do not power MG996 servos from the ESP32 3.3 V pin. Use a separate 5 to 6 V servo supply capable of the motor current, and connect the servo ground to the walkie/ESP32 ground.
+GPIO1/GPIO3 are UART0 pins, so they will be taken over by PWM signal generation only in `RCAR` app mode. Do not power MG996 servos from ESP32 3.3 V pin. Use separate 5 to 6 V power supply able to power your motor and connect servo ground to walkie/ESP32 ground.
 
 ## Internal Build: Grey Walkie
 
@@ -125,9 +127,11 @@ GPIO1/GPIO3 are UART0 pins, so they are only taken over by PWM when the `RCAR` a
   <img src="Assets/readme/grey-walkie-internal.jpg" alt="Grey walkie internal circuitry" width="900">
 </p>
 
-The grey walkie is the second iteration. Its internal wiring and soldering are much cleaner, with thinner wires used between modules. That makes the inside less congested, easier to inspect, and easier to debug. Compared with the first build, the grey unit has a more intentional layout and less mechanical stress on the small solder joints.
+The grey walkie is the second version. It has clean wiring and soldering, where thinner wires are used between different modules. This helps reduce congestion inside and makes it easier to look through wires, check connections, and find potential failures.
 
-The cleaner wiring also matters for audio. Digital microphones, I2S speaker signals, and ESP32 Wi-Fi bursts can all become annoying to debug when power, ground, and signal wiring are crowded together. Keeping the second iteration cleaner made it easier to isolate software audio problems from wiring problems.
+Compared to the first iteration, the grey version has better designed layout and less mechanical stress on thin soldering points.
+
+In addition, clean wiring also helps with debugging of audio issues. Digital microphone, I2S audio devices, and Wi-Fi ESP32 burst are things that become really hard to debug when power, ground, and signal wiring are mixed up.
 
 ## Internal Build: Black Walkie
 
@@ -135,68 +139,68 @@ The cleaner wiring also matters for audio. Digital microphones, I2S speaker sign
   <img src="Assets/readme/black-walkie-internal.jpg" alt="Black walkie internal circuitry" width="900">
 </p>
 
-The black walkie is the first ESP32 iteration. It works, but the internal wiring uses much thicker wires and is more congested inside the casing. This made the build harder to close, harder to inspect, and harder to modify later.
+The black walkie is the first version with ESP32. It works, but it has quite thick internal wiring and thus congestion inside the walkie housing which makes build difficult and harder to inspect.
 
-The black unit also revealed why the firmware needs board profiles. Its PTT and LED pins are swapped compared with the grey unit, and the top-left/top-right buttons are swapped too. Instead of rewiring both units to be identical, the firmware supports both physical layouts.
+Moreover, black walkie revealed the necessity of board profiles in the firmware code. The PTT button and LED pin assignment is switched, and the top-left/top-right buttons are also switched. In order to avoid rewiring the units, the firmware supports two different physical layouts.
 
 ## Project History
 
-This walkie-talkie design took multiple iterations before reaching the current ESP32 ESP-IDF version.
+It took several iterations before coming up with this ESP32 + ESP-IDF walkie-talkie version.
 
-The first approach used a Raspberry Pi Pico with an NRF24L01 radio module. That was useful for learning, but it became difficult for real voice audio. The Pico does not have the same straightforward I2S peripheral setup as the ESP32 for this project, and using PIO to implement I2S was too difficult and time-consuming for this build. NRF24L01 audio transport also would have required more custom protocol work.
+Initially, it was planned to use Raspberry Pi Pico with an external NRF24L01 radio module. It was a good choice for learning purposes, but it quickly became clear that it won't work well for real voice audio. ESP32 has more straightforward I2S peripheral setup than Pico for this application and implementation of such via PIO on Pico is too complicated and requires more time. Also, NRF24L01 radio chip doesn't have good audio transport capability.
 
-The project then moved to an ESP32 with an external antenna. That change helped a lot because ESP32 has strong documentation, built-in Wi-Fi radio hardware, ESP-NOW support, mature ESP-IDF tooling, and standard I2S peripherals for both microphone input and speaker output. Moving from MicroPython to compiled ESP-IDF firmware also made the system faster and gave more control over timing, buffering, compression, and GPIO behavior.
+Then, ESP32 was chosen with external antenna. It helped a lot since ESP32 has good documentation, Wi-Fi hardware support, ESP-NOW, ESP-IDF tools, and standard I2S peripherals for both microphone and speaker. Transition from MicroPython to compiled ESP-IDF firmware also made system much faster and provided more flexibility over timing and buffer management.
 
-## Range Resilience and Field Diagnostics
+## Range Testing and Field Diagnostics
 
-The firmware is built to be tested outdoors, not just on a desk. When the walkies get far enough apart that packets start dropping, the radio layer can automatically send one duplicate copy of each audio frame. Both copies use the same sequence number, so the receiver plays whichever copy arrives first and ignores the duplicate instead of stuttering.
+Firmware is supposed to work in the field, not just in testing labs. Once packets start to drop because the walkies are too far apart, the radio layer will duplicate every audio frame to try once again. Sequence numbers of duplicated frames match, hence the receiver will play only one copy, not both.
 
-The receiver also tracks missing sequence numbers. Very short gaps are filled with packet-loss concealment audio so the speaker fades through the missing frame instead of clicking or abruptly cutting out. Longer fades still sound bad, but the onboard log makes them measurable instead of mysterious.
+The receiver is able to detect missed sequence numbers of received packets. Very short intervals between missed frames result in packet loss concealment audio, hence fading the sound through the missing audio frames, not making any clicks or breaks. Longer intervals are audible, but at least they become measurable due to onboard logging.
 
-Every second, the walkie records a compact JSON telemetry line with RSSI, link quality, jitter-buffer depth, duplicate packets, missing-packet concealment, send failures, and wrong-channel/peer rejects. These lines are printed over USB when connected and saved to onboard flash when the walkie is out in the field. After a range test, hold `PTT + bottom-left` during startup to dump the stored `range.jsonl` data over serial.
+Every second, the walkie produces a small JSON line of telemetry about RSSI, link quality, jitter-buffer depth, duplicates, packet-loss concealment, send errors and wrong-channel/wrong-peer packets. These lines are printed to USB console when attached and recorded to onboard flash storage when the walkie is on the range. To view telemetry after the range test, hold `PTT + bottom-left` during power on to export `range.jsonl` file via serial port.
 
 ## Firmware Features
 
-The firmware is an ESP-IDF project designed for the Espressif VS Code extension and command-line `idf.py`.
+The firmware is an ESP-IDF based project, intended to work with the Espressif VS Code extension and command-line tool `idf.py`.
 
 ### Firmware Showcase
 
-The firmware turns the 3D-printed handheld into more than a simple radio. It is a menu-driven ESP32 device with voice, controls, telemetry, lights, and room for future Wi-Fi apps.
+The firmware makes the 3D-printed handheld much more than a radio. It is a menu-driven ESP32 device with voice, controls, telemetry, lights and Wi-Fi applications in the future.
 
-Current firmware version: `0.5.4`.
+Current firmware version: `0.5.4`
 
 Current firmware features:
 
-- 20 logical walkie-talkie channels, selected from the main PTT screen.
-- Push-to-talk ESP-NOW voice mode with channel-matched audio packets.
-- Link detection with heartbeat packets and an RSSI-based signal meter.
-- Adaptive weak-link redundancy that sends an extra copy of each audio frame when the link quality is low or unknown.
-- Six physical push buttons per walkie: PTT, OK/select, top-left, top-right, bottom-left, and bottom-right.
-- Apps menu with `RCAR`, `BUTTON CTRL`, `LIGHTS`, and `KID MODE`.
-- `RCAR` app with black-walkie Web Server mode and grey-to-black Walkie controller mode.
-- Settings menu for audio limiting, low-battery limiting, speaker boost, mic boost, mic cut, flash usage, memory usage, and CPU overlay.
-- Settings rows for firmware version display and onboard log dumping.
-- Light playground for experimenting with the LED and 3.3 V laser module through strobe, target, rate, constant-on, and preset pattern modes.
-- Kid mode that locks the device to one channel until OK is held for 2 seconds.
+* 20 logical walkie-talkie channels, selected from the main PTT screen;
+* Push-to-talk ESP-NOW voice mode with channel-matched audio packets;
+* Link detection through heartbeats and RSSI-based signal meter;
+* Adaptive weak-link redundancy through duplicating every audio frame when link quality is low or unknown;
+* Six physical buttons on each walkie: PTT, OK/select, top-left, top-right, bottom-left and bottom-right;
+* Applications menu with `RCAR`, `BUTTON CTRL`, `LIGHTS` and `KID MODE`;
+* `RCAR` application with black-walkie Web Server mode and grey-to-black Walkie controller mode;
+* Settings menu with options to limit audio level, low-battery, speaker boost, mic boost, mic cut, flash usage, memory usage, CPU overlay;
+* Settings rows to print firmware version and onboard log to USB;
+* Light playground to try LED and 3.3 V laser module through strobe, target, rate, constant and preset modes;
+* Kid mode which locks walkie to the only channel and can be exited with holding OK for 2 seconds.
 
 Planned or experimental firmware ideas:
 
-- Wi-Fi talk mode where a walkie can connect to a normal Wi-Fi network instead of only peer-to-peer ESP-NOW.
-- TX-to-computer mode for sending microphone audio or control packets from the walkie to a computer.
-- RX-from-computer mode for receiving audio, commands, or messages from a computer and playing/showing them on the walkie.
-- More IoT control modes for lights, robots, sensors, and other ESP32 projects.
+* Wi-Fi talk mode for connecting walkie to any Wi-Fi network instead of just ESP-NOW;
+* TX-to-computer mode to send microphone audio or control packets from the walkie to the computer;
+* RX-from-computer mode to receive audio, commands or text from the computer and play/display it on the walkie;
+* Additional IoT control modes for lights, robots, sensors and other ESP32-based devices.
 
 ### User Interface
 
-- Main PTT screen with device name, battery icon, voltage, channel number, link state, volume, laser state, signal meter, RX activity, and PTT activity.
-- Channel display formatted as `< CH XX >` to show that top-left/top-right can change through the 20 logical channels.
-- Apps menu with only functional apps: `RCAR`, `BUTTON CTRL`, `LIGHTS`, and `KID MODE`.
-- `RCAR` menu with `WEB SERVER` and `WALKIE` modes. Web Server mode starts an open Wi-Fi AP named `ESP32-Tank` on the black walkie and serves a joystick page at `http://192.168.4.1`. Walkie mode lets the grey walkie control the black walkie's left/right servos over ESP-NOW.
-- Settings page with audio limiting, low-battery limiting, speaker boost, mic boost, mic cut, flash usage, memory usage, CPU overlay, firmware version, and log dump.
-- Lights app/light playground with strobe, target selection, rate, constant LED, constant 3.3 V laser, and preset patterns.
-- Kid mode locked to channel 1, with OK held for 2 seconds to exit.
+* Main PTT screen with walkie name, battery symbol, voltage, channel number, link status, volume, laser status, signal meter, RX activity and PTT activity;
+* Channel display in format `< CH XX >` to show that top-left/top-right button can change channels through 20 logical channels;
+* Apps menu with functional applications: `RCAR`, `BUTTON CTRL`, `LIGHTS` and `KID MODE`;
+* `RCAR` menu with `WEB SERVER` and `WALKIE` modes. In the Web Server mode, black walkie creates open Wi-Fi AP called `ESP32-Tank` and serves a joystick page at `http://192.168.4.1`. In Walkie mode, grey walkie controls left and right servos of black walkie over ESP-NOW.
+* Settings page with audio limiting, low-battery limiting, speaker boost, mic boost, mic cut, flash usage, memory usage, CPU overlay, firmware version and log dumping;
+* Lights app/light playground with strobe, target selection, rate, constant LED, constant 3.3 V laser and preset patterns;
+* Kid mode locked to channel 1, can be exited with holding OK for 2 seconds.
 
-The screenshots below are from the real walkie-talkie OLED, not the simulator. They show the current firmware UI running on the hardware.
+Below screenshots are taken directly from the real OLED of walkie-talkie, not from the simulator. They show current firmware UI running on the hardware.
 
 <p align="center">
   <img src="Assets/PTT%20home%20screen%20GUI.png" alt="Real OLED PTT home screen GUI" width="420">
@@ -204,7 +208,7 @@ The screenshots below are from the real walkie-talkie OLED, not the simulator. T
 </p>
 
 <p align="center">
-  <em>Main PTT home screen with channel/link status, and the channel scanning screen used to find active peers.</em>
+  <em>Main PTT home screen with channel/link status, and channel scanning screen to find active peers.</em>
 </p>
 
 <p align="center">
@@ -213,28 +217,28 @@ The screenshots below are from the real walkie-talkie OLED, not the simulator. T
 </p>
 
 <p align="center">
-  <em>Settings menu with mic sensitivity enabled, and the light playground strobe screen for LED/laser effects.</em>
+  <em>Settings page with mic sensitivity enabled, and light playground strobe screen for LED/laser effects.</em>
 </p>
 
 ### Radio and Link System
 
-- Uses ESP-NOW for peer-to-peer packets.
-- Uses a logical channel number from 1 to 20 inside every packet.
-- Uses RF channel from ESP-IDF config, currently defaulting to channel 6.
-- Sends heartbeat packets so the UI can show `LINK ON` or `LINK OFF`.
-- Reads RSSI from received ESP-NOW metadata when available.
-- Smooths RSSI into a signal-quality percentage for the left-side signal meter.
-- Sends duplicate audio packets with the same sequence number when the link is weak, giving the receiver a second chance to receive a frame before playback needs it.
-- De-duplicates repeated sequence numbers on receive so redundancy does not play the same 20 ms audio frame twice.
-- Requests maximum ESP32 Wi-Fi transmit power with `esp_wifi_set_max_tx_power(84)`.
-- Disables Wi-Fi power saving for more consistent latency.
-- Configures the ESP-NOW peer for ESP32 long-range PHY rate when supported by the IDF and hardware.
+* ESP-NOW used as peer-to-peer protocol;
+* Logical channel number 1-20 in each packet;
+* RF channel from ESP-IDF config, default channel is 6;
+* Heartbeat packets are sent so that PTT screen can show `LINK ON` or `LINK OFF`;
+* RSSI from received ESP-NOW packet metadata is read if possible;
+* Smoothed RSSI converted into the signal-quality percentage for signal meter on the left side;
+* Duplicated audio packets with the same sequence number are sent when link is weak, providing second chance to receive frame before it's time to play;
+* Repeated sequence numbers are deduplicated on receive side to not replay the same 20 ms audio frame twice due to redundancy;
+* Request maximum ESP32 Wi-Fi transmit power with `esp_wifi_set_max_tx_power(84)`;
+* Wi-Fi power saving mode is disabled for more consistent latency;
+* Configure ESP-NOW peer with ESP32 long-range PHY rate.
 
 ### Range Debug Logging
 
-The firmware creates one JSON-line telemetry record per second. Each record is printed over USB serial when connected and also saved into an onboard flash log, so the walkie can collect range-test data while it is far away from the computer.
+The firmware creates one JSON-line telemetry record each second. The record is printed over USB serial if present and also saved into an onboard flash log allowing to get the range-test data from a remote walkie.
 
-The onboard log lives in a dedicated `fieldlog` SPIFFS partition. It stores `range.jsonl` plus one rotated previous file, giving roughly 512 KB of flash-backed range telemetry storage. The firmware rotates the current file before it fills the partition.
+The onboard log is kept inside the `fieldlog` partition of SPIFFS storage. There is space for `range.jsonl` and one rotated previous file providing roughly 512 KB of flash-based range telemetry storage.
 
 Example record:
 
@@ -242,121 +246,121 @@ Example record:
 {"event":"radio_stats","t_ms":123456,"board":"BLACK","ch":1,"ptt":false,"link":true,"rssi_dbm":-82,"quality_pct":21,"jitter_frames":3,"vol_pct":50,"tx_audio":0,"tx_audio_dup":0,"tx_ctrl":2,"tx_no_mem":0,"tx_fail":0,"rx_audio":48,"rx_audio_dup":7,"rx_audio_old":0,"rx_plc":2,"rx_ctrl":1,"rx_wrong_peer":0,"rx_bad_proto":0,"rx_wrong_channel":0}
 ```
 
-Useful fields:
+Key fields:
 
-- `rssi_dbm` and `quality_pct` show how strong the peer signal is.
-- `jitter_frames` shows how many decoded frames are waiting for speaker playback.
-- `tx_audio_dup` shows how many redundant audio packets were sent.
-- `rx_audio_dup` shows duplicate packets that were received and safely ignored.
-- `rx_plc` shows how many packet-loss concealment frames were generated because audio packets were still missing.
-- `tx_no_mem` and `tx_fail` show whether ESP-NOW had trouble queueing or sending packets.
-- `rx_wrong_channel`, `rx_bad_proto`, and `rx_wrong_peer` help diagnose configuration or interference problems.
+* `rssi_dbm` and `quality_pct` tell how strong the peer signal is;
+* `jitter_frames` tell how many decoded frames are waiting for playback;
+* `tx_audio_dup` tells how many duplicate audio packets were transmitted;
+* `rx_audio_dup` tells how many duplicate packets were received and silently dropped;
+* `rx_plc` tells how many PLC frames were created due to the lack of missing audio packets;
+* `tx_no_mem` and `tx_fail` indicate the failure to queue/sent packets by ESP-NOW;
+* `rx_wrong_channel`, `rx_bad_proto` and `rx_wrong_peer` help to diagnose possible misconfiguration or interference issues.
 
-To capture live serial logs when a computer is connected:
+In order to collect live logs when the computer is attached:
 
 ```powershell
 idf.py -p COM6 monitor | Tee-Object range-test.jsonl
 ```
 
-To dump the onboard flash log later:
+In order to dump the onboard flash logs later:
 
-1. Connect the walkie to USB.
-2. Hold `PTT` and `bottom-left`.
-3. Reset or power-cycle the walkie while still holding those two buttons.
-4. Open the serial monitor and save the output.
+1. Attach the walkie via USB;
+2. Hold `PTT` and `bottom-left`;
+3. Powercycle the walkie while pressing those two buttons;
+4. Open serial monitor and save its output.
 
-The dump begins with `field_log_dump_begin`, prints the stored `radio_stats` JSON lines, and ends with `field_log_dump_end`. The OK button is intentionally not used for the boot gesture because OK is on GPIO0, which is also an ESP32 boot strap pin.
+The dump will start with `field_log_dump_begin`, followed by printing the collected `radio_stats` JSON records and end with `field_log_dump_end`. The OK button is not used for this boot gesture intentionally since it is mapped to GPIO0 which is also the boot strap pin of ESP32.
 
-You can also dump logs while the firmware is already running:
+Also, it is possible to dump logs without resetting the walkie:
 
-1. Connect the walkie to USB serial.
-2. Open `APPS` then `SETTINGS`.
-3. Scroll to `DUMP LOGS`.
-4. Press `OK`; the firmware prints the stored log immediately over serial.
+1. Attach the walkie via USB serial;
+2. Open `APPS` and then `SETTINGS`;
+3. Scroll down to `DUMP LOGS`;
+4. Press `OK`: the firmware will print the logs right now over serial.
 
-The `FW VERSION` settings row shows the currently flashed firmware version, currently `V0.5.4`.
+The `FW VERSION` row of `SETTINGS` shows the currently flashed firmware version, currently `V0.5.4`.
 
-Both walkies should run firmware with the de-duplication logic before testing weak-link redundancy. If only one unit is updated, the older receiver may treat duplicate audio packets as real repeated audio.
+Both units should be using the firmware with de-duplication logic prior to performing weak-link redundancy tests. If only one walkie is flashed, the older receiver may interpret the duplicates of audio packets as new packets containing real repeated audio.
 
 ### Audio Transport
 
-Audio is sent as compressed voice frames over ESP-NOW.
+The voice frames are sent over ESP-NOW as compressed voice.
 
-- Microphone sample rate: 16 kHz mono.
-- Frame duration: 20 ms.
-- Samples per frame: 320.
-- Compression: IMA ADPCM at 4 bits per sample.
-- Audio payload per frame: 160 bytes.
-- One audio frame is sent in one ESP-NOW packet.
-- Packet rate while PTT is held: 50 audio packets per second.
-- Packed audio packet size: 171 bytes.
+* Microphone sample rate: 16 kHz mono;
+* Frame duration: 20 ms;
+* Samples per frame: 320;
+* Compression algorithm: IMA ADPCM with 4 bits per sample;
+* Payload size: 160 bytes per frame;
+* The frame is transmitted in a single packet;
+* Packet rate while PTT is pressed: 50 packets per second;
+* Packets size: 171 bytes;
 
-Audio packet fields:
+Fields of audio packet:
 
-| Field | Size | Purpose |
-| --- | ---: | --- |
-| Packet type | 1 byte | `0xA1` for audio |
-| Protocol version | 1 byte | Firmware protocol version |
-| Logical channel | 1 byte | 1 to 20 software channel |
-| Flags | 1 byte | Kid-mode/audio flags |
-| Sequence number | 2 bytes | Detects ordering and loss |
-| ADPCM predictor | 2 bytes | Decoder state for the frame |
-| ADPCM step index | 1 byte | Decoder step size state |
-| Sample count | 2 bytes | Usually 320 |
-| ADPCM payload | 160 bytes | Compressed voice samples |
+| Field         | Size | Description                  |
+| ------------- | ---: | ---------------------------- |
+| Packet type   |    1 | `0xA1` for audio             |
+| Proto ver.    |    1 | Protocol version of firmware |
+| Logical ch.   |    1 | 1 to 20 software channels    |
+| Flags         |    1 | Kid-mode/audio flag          |
+| Sequence      |    2 | Detects ordering and loss    |
+| ADPCM pred.   |    2 | Decoder state of the frame   |
+| ADPCM step    |    1 | Decoder state of step size   |
+| Sample cnt.   |    2 | Usually 320                  |
+| ADPCM payload |  160 | Compressed voice samples     |
 
-Control packet types:
+Types of control packets:
 
-| Packet | Value | Purpose |
-| --- | ---: | --- |
-| Audio | `0xA1` | Compressed voice |
-| Heartbeat | `0xB1` | Link detection |
-| Scan request | `0xB2` | Channel scan |
+| Packet        |  Value | Description        |
+| ------------- | -----: | ------------------ |
+| Audio         | `0xA1` | Compressed voice   |
+| Heartbeat     | `0xB1` | Link detection     |
+| Scan request  | `0xB2` | Channel scan       |
 | Scan response | `0xB3` | Channel scan reply |
 
 ### Audio Cleanup
 
-The firmware includes several processing steps to make ESP-NOW voice more understandable:
+There is multiple processing steps inside the firmware in order to make ESP-NOW voice more comprehensible:
 
-- I2S microphone capture uses the left channel because the microphone L/R pin is tied to ground.
-- A mic warmup discards the first frames after PTT starts so the beginning of a transmission is less noisy.
-- A high-pass filter reduces DC offset and low-frequency rumble.
-- Noise-floor tracking helps distinguish quiet background from voice.
-- Gentle speech gating reduces background noise without fully chopping quiet speech.
-- Per-board mic gain profiles compensate for the black and grey builds having different real-world microphone behavior.
-- Speaker boost and mic boost settings adjust fixed-point gain in the firmware.
-- A receive jitter buffer smooths packet arrival timing.
-- Packet-loss concealment fills short gaps so missed packets sound less harsh.
+* I2S microphone captures use the left channel since microphone L/R pin is tied to ground;
+* Mic warmup discards the first frames after PTT press making the start of the transmission less noisy;
+* High pass filter reduces DC offset and low-frequency rumble;
+* Noise floor tracking helps distinguishing quiet background from voice;
+* Gentle speech gating makes the background less noisy without fully cutting quiet speech;
+* Different mic gain profiles for black and grey board to compensate for their different microphone behaviour;
+* Speaker boost and mic boost settings adjust fixed-point gain inside the firmware;
+* Receive jitter buffer to smooth out the arrival of packets;
+* Packet loss concealment to fill short silence periods due to the missed packet.
 
 ## Code Structure
 
-| Path | Purpose |
-| --- | --- |
-| `main/main.c` | Main application state, board selection, GPIO, ADC, ESP-NOW, I2S setup, RC car PWM/web/control mode, FreeRTOS tasks, buttons, menus, lights, heartbeat, scan, capture, playback, and resource stats |
-| `main/walkie_audio.c` | Microphone cleanup, gain, ADPCM encode/decode, playback scaling, and packet-loss concealment helpers |
-| `main/walkie_audio.h` | Audio API shared with the main application |
-| `main/walkie_display.c` | SSD1306 OLED driver, framebuffer drawing, fonts, and all UI screens |
-| `main/walkie_display.h` | Display API |
-| `main/walkie_types.h` | Shared board, UI, RC car, settings, lights, and snapshot structures |
-| `main/Kconfig.projbuild` | Menuconfig options for black/grey board profiles, MAC addresses, and RF channel |
-| `partitions.csv` | Custom ESP-IDF partition table with the app partition and 512 KB onboard `fieldlog` SPIFFS log storage |
-| `sdkconfig.defaults` | Default ESP-IDF project settings |
-| `CMakeLists.txt` | Top-level ESP-IDF project definition |
+| Path                     | Description                                                                                                                                                                             |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `main/main.c`            | Main application, board select, GPIO, ADC, I2S setup, ESP-NOW, RC car PWM/web/control mode, FreeRTOS tasks, buttons, menus, display, heartbeat, scan, capture, playback, resource stats |
+| `main/walkie_audio.c`    | Microphone cleanup, gain, ADPCM encode/decode, playback scaling, packet loss concealment helpers                                                                                        |
+| `main/walkie_audio.h`    | Audio API common between main application and walkie_audio code                                                                                                                         |
+| `main/walkie_display.c`  | SSD1306 OLED display driver, framebuffer rendering, fonts and all screens                                                                                                               |
+| `main/walkie_display.h`  | Display API                                                                                                                                                                             |
+| `main/walkie_types.h`    | Common board/UI/RC car/settings/lights/snaphot structures                                                                                                                               |
+| `main/Kconfig.projbuild` | Menuconfig options for black/grey board profiles, MAC addresses, RF channel                                                                                                             |
+| `partitions.csv`         | Custom partition table with app and fieldlog partitions                                                                                                                                 |
+| `sdkconfig.defaults`     | Default ESP-IDF project settings                                                                                                                                                        |
+| `CMakeLists.txt`         | Project definition of ESP-IDF                                                                                                                                                           |
 
 ## Runtime Tasks
 
-The firmware is split into a few FreeRTOS tasks:
+The firmware is divided into several FreeRTOS tasks as follows:
 
-- `control_task` reads buttons, updates menus, smooths volume/battery readings, sends heartbeats, updates outputs, and redraws the OLED.
-- `capture_task` runs while PTT is pressed, reads the I2S microphone, processes voice, compresses it, and sends ESP-NOW audio frames.
-- `radio_task` receives ESP-NOW packets from the callback queue and routes heartbeats, scans, and audio frames.
-- `playback_task` drains the receive jitter buffer and writes decoded audio to the I2S speaker path.
+* `control_task` reads the buttons, updates menus, smoothes out the volume and battery measurements, sends heartbeats, updates the outputs, and redrawing the OLED.
+* `capture_task` executes when the PTT is pressed, reads the I2S microphone, processes the voice data, compresses it and transmits ESP-NOW audio frames.
+* `radio_task` processes ESP-NOW packets in the callback queue, handles the heartbeats, scans and audio frames.
+* `playback_task` drains the receive jitter buffer and feeds the decoded audio back into the I2S speaker path.
 
-This split keeps the UI responsive while audio and radio work continue in the background.
+This architecture ensures that the user interface remains responsive while the audio and radio operations keep running in the background.
 
 ## Build and Flash
 
-Open the folder in VS Code with the Espressif IDF extension, or use the ESP-IDF command line.
+Open the folder in VS Code with Espressif IDF extension, or use the ESP-IDF command line interface.
 
 ### Configure the board
 
@@ -372,12 +376,12 @@ Then open:
 Walkie Talkie Configuration
 ```
 
-Choose either:
+Select either:
 
-- `Black walkie`
-- `Grey walkie`
+* `Black walkie`
+* `Grey walkie`
 
-This selects the correct PTT, LED, top-left, top-right, battery smoothing, mic gain, and peer MAC behavior.
+It will configure the correct PTT, LED, top-left, top-right buttons, battery smoothing, mic gain and peer MAC settings.
 
 ### Build
 
@@ -393,7 +397,7 @@ Replace `COM6` with your actual serial port:
 idf.py -p COM6 flash monitor
 ```
 
-On this Windows setup, the Espressif environment can also be loaded with:
+On this Windows development environment the Espressif tools can be loaded with:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -NoProfile -Command "& { . 'C:\Espressif\tools\Microsoft.662a3be.PowerShell_profile.ps1'; idf.py -p COM6 flash monitor }"
@@ -401,145 +405,145 @@ powershell -ExecutionPolicy Bypass -NoProfile -Command "& { . 'C:\Espressif\tool
 
 ## Resource Usage
 
-The firmware targets the ESP32 at 240 MHz with 4 MB flash. A recent build of this project used approximately:
+The firmware runs on the ESP32 at 240 MHz with 4 MB flash. The most recent build of this project has used approximately:
 
-| Resource | Approximate usage |
-| --- | ---: |
-| Firmware app image | 917 KiB |
-| App partition used | 61 percent |
-| App partition free | 583 KiB |
-| Flash code | 686 KB |
-| Flash data | 144 KB |
-| Static DRAM | 45 KB |
-| Static DRAM remaining | 136 KB |
-| IRAM | 90 KB |
-| IRAM remaining | 41 KB |
+| Resource              | Approximate usage |
+| --------------------- | ----------------: |
+| Firmware app image    |           917 KiB |
+| App partition used    |        61 percent |
+| App partition free    |           583 KiB |
+| Flash code            |            686 KB |
+| Flash data            |            144 KB |
+| Static DRAM           |             45 KB |
+| Static DRAM remaining |            136 KB |
+| IRAM                  |             90 KB |
+| IRAM remaining        |             41 KB |
 
-Most of the flash usage comes from ESP-IDF Wi-Fi, ESP-NOW, HTTP server, networking, and support libraries, not from the walkie application code itself.
+Most of the flash memory usage is taken by ESP-IDF Wi-Fi, ESP-NOW, HTTP server and networking, not by the walkie application itself.
 
-The CPU runs at a fixed 240 MHz in the current configuration because dynamic power management is disabled. The CPU percentage shown in the UI is a firmware activity/debug indicator, not a clock-speed readout.
+The CPU runs at a constant 240 MHz speed in the current configuration because dynamic power management is disabled. The percentage displayed in the UI is a firmware activity indicator, not a measure of the actual CPU speed.
 
 ## Power Usage and Battery Life
 
-The prototype battery is a 3.85 V nominal high-capacity lithium cell rated around 2000 mAh. Actual runtime depends on volume, transmit duty cycle, LED/laser use, Wi-Fi conditions, battery health, regulator efficiency, and speaker loudness.
+The battery of the prototype has been 3.85 V nominal capacity high capacity lithium cell with about 2000 mAh capacity. The actual runtime varies depending on volume setting, transmit time, LEDs/lasers usage, Wi-Fi conditions, battery state of charge, regulator efficiency and speaker volume.
 
-Estimated current draw:
+Approximate current consumption:
 
-| Mode | Estimated current |
-| --- | ---: |
-| Idle/listening, OLED on, no audio | 125 to 175 mA |
-| Receiving voice at about 50 percent volume | 180 to 270 mA |
-| PTT transmit with LED on, no speaker playback | 180 to 280 mA |
-| Busy worst case with RX audio, LED, laser, and high Wi-Fi activity | 250 to 400 mA or more |
-| RC car mode, excluding servo motor power | Similar to Wi-Fi/ESP-NOW active modes |
-| MG996 servo drivetrain power | Can be hundreds of mA to multiple amps depending on load/stall |
+| Mode                                                        |                                          Estimated current |
+| ----------------------------------------------------------- | ---------------------------------------------------------: |
+| Idle/listening mode, OLED is on, no audio                   |                                              125 to 175 mA |
+| Receiving voice data at around 50 percent volume            |                                              180 to 270 mA |
+| PTT transmit mode with LED on, no audio playback            |                                              180 to 280 mA |
+| Worst case usage with RX audio, LED, laser and active Wi-Fi |                                      250 to 400 mA or more |
+| RC car mode, excluding servo motor current                  |                      Similar to Wi-Fi/ESP-NOW active modes |
+| MG996 servos drivetrain power                               | Can be hundreds of mA to even amps depending on load/stall |
 
-Estimated runtime from a 2000 mAh cell:
+Estimated runtime from 2000 mAh battery:
 
-| Usage pattern | Estimate |
-| --- | ---: |
-| Mostly idle/listening | 11 to 16 hours |
-| Mixed receive/transmit use | 7 to 10 hours |
-| Heavy audio and frequent transmit | 5 to 8 hours |
-| Near worst-case continuous high draw | 4 to 6 hours |
+| Usage pattern                           |       Estimate |
+| --------------------------------------- | -------------: |
+| Mostly idle/listening                   | 11 to 16 hours |
+| Mixed receive/transmit operation        |  7 to 10 hours |
+| Lots of audio and frequent transmitting |   5 to 8 hours |
+| Near worst-case high draw               |   4 to 6 hours |
 
-If the system uses a linear regulator from 5 V down to 3.3 V, the regulator wastes the voltage difference as heat. At 250 mA, the regulator dissipates about `(5.0 V - 3.3 V) * 0.25 A = 0.425 W`. At 350 mA, it dissipates about `0.595 W`. That can become warm in a small 3D-printed casing, so a buck regulator would be more efficient for long battery life.
+If the system is using a linear regulator from 5 V supply to 3.3 V, the regulator burns away the difference between the voltages as heat. With 250 mA load the regulator consumes `(5.0 V - 3.3 V) * 0.25 A = 0.425 W`. For 350 mA load it dissipated `0.595 W`. It will get fairly hot in the small 3D-printed housing, so a buck regulator should be more efficient for extended battery life.
 
-Approximate subsystem draw:
+Approximate subsystem current consumption:
 
-- ESP32 with Wi-Fi active: about 100 to 240 mA depending on receive/transmit activity and RF power.
-- OLED: roughly 10 to 25 mA depending on display content and module.
-- LED: about 13 mA.
-- Laser: about 3 mA.
-- Speaker amplifier at 50 percent volume: roughly 50 to 90 mA average for loud voice, with higher peaks depending on speaker impedance and output level.
-- MG996 drivetrain servos: power separately from a high-current 5 to 6 V rail; the walkie GPIOs provide control signals only.
+* ESP32 with Wi-Fi active: 100 to 240 mA depending on receive/transmit activity and RF power.
+* OLED: 10 to 25 mA depending on display and module.
+* LED: 13 mA.
+* Laser: 3 mA.
+* Audio amplifier at 50 percent volume: 50 to 90 mA average for loud voice, with higher peaks depending on speaker impedance and output volume.
+* MG996 drivetrain servos: powered from a separate high current 5 to 6 V rail, the walkie GPIOs only control the servos.
 
 ## Bill of Materials
 
-| Qty | Part | Notes |
-| ---: | --- | --- |
-| 2 | 3D-printed walkie-talkie casings | Main enclosure for each handheld unit |
-| 2 | ESP32-U style development boards | External antenna version recommended |
-| 2 | 2.4 GHz external antennas | Improves range when mounted well |
-| 2 | SSD1306 OLED displays | I2C, connected to GPIO18/GPIO19 |
-| 2 | I2S microphones | L/R tied to GND for left-channel capture |
-| 2 | MAX9875A-style speaker amplifier modules | I2S/audio output amplifier stage |
-| 2 | Small speakers | Fit inside the 3D-printed casing |
-| 2 | Potentiometers | Analog volume control |
-| 2 | 3.85 V nominal lithium batteries | Prototype used reclaimed 2000 mAh vape cells |
-| 2 | TP4056 lithium charging/protection boards | Strongly recommended; use protected OUT+/OUT- style modules if possible |
-| 2 | 5 V boost converter modules | Boosts the battery output to 5 V for ESP32 VIN/5V and speaker amp power |
-| 2 | Main power switches/buttons | Placed between TP4056 output positive and boost converter VCC; separate from the six UI push buttons |
-| 2 | LEDs | PTT/status/lights output |
-| 2 | 3.3 V laser modules | Manual and lights-app output |
-| 12 | Momentary push buttons | Six per walkie: PTT, OK, top-left, top-right, bottom-left, bottom-right |
-| 2 | MG996-style continuous-rotation servo motors | Optional RC car drivetrain controlled by the black walkie's GPIO1/GPIO3 outputs |
-| 4 | Battery divider resistors | Black: 100k/100k, grey: 220k/220k |
-| 1 set | Thin silicone wire | Thin wire is much easier to route inside the casing |
-| 1 set | Heat-shrink tubing/tape | Insulation and strain relief |
-| 1 set | Solder, flux, tools | Assembly and debugging |
-| optional | 3D printed brackets or mounts | Place in `Walkie Talkie CAD files` |
+|      Qty | Part                                         | Notes                                                                           |
+| -------: | -------------------------------------------- | ------------------------------------------------------------------------------- |
+|        2 | 3D-printed walkie-talkie casings             | Main enclosure for each handheld unit                                           |
+|        2 | ESP32-U style development boards             | External antenna version highly recommended                                     |
+|        2 | 2.4 GHz external antennas                    | Improve range if mounted properly                                               |
+|        2 | SSD1306 OLED displays                        | I2C, connects to GPIO18/GPIO19                                                  |
+|        2 | I2S microphones                              | L/R connected to GND to capture left channel                                    |
+|        2 | MAX9875A style speaker amplifier modules     | I2S/audio output amplifier                                                      |
+|        2 | Small speakers                               | Fits inside the 3D-printed casing                                               |
+|        2 | Potentiometers                               | Analog volume control                                                           |
+|        2 | 3.85 V nominal lithium batteries             | Prototype used reclaimed 2000 mAh vape cells                                    |
+|        2 | TP4056 lithium charging/protection boards    | Highly recommended; preferably OUT+/OUT- style modules                          |
+|        2 | 5V boost converter modules                   | Boosts battery output to 5V for ESP32 VIN/5V and speaker amp                    |
+|        2 | Main power switches/buttons                  | Located between TP4056 output positive and boost converter VCC                  |
+|        2 | LEDs                                         | PTT/status/lights output                                                        |
+|        2 | 3.3V laser modules                           | Manual and lights-app output                                                    |
+|       12 | Momentary push buttons                       | 6 per walkie: PTT, OK, TL, TR, BL, BR                                           |
+|        2 | MG996 style continuous rotation servo motors | Optional RC car drivetrain controlled by the black walkie's GPIO1/GPIO3 outputs |
+|        4 | Battery divider resistors                    | Black: 100k/100k, grey: 220k/220k                                               |
+|        1 | set                                          | Thin silicone wire                                                              |
+|        1 | set                                          | Heat-shrink tubing/tape                                                         |
+|        1 | set                                          | Solder, flux, tools                                                             |
+| optional | 3D printed brackets or mounts                | Put them in `Walkie Talkie CAD files`                                           |
 
-## Assembly Process
+## Assembly Instructions
 
-Start by soldering all of the electronic components outside the walkie-talkie casing. Use wires long enough that each module can reach its final position inside the casing without pulling on the solder joints. Thin flexible wire makes the final assembly much easier, especially around the ESP32, OLED, buttons, speaker, and battery.
+First, solder all electronics outside of walkie-talkie casing. Make sure wires are long enough so modules can be placed in their places inside the casing without stressing solder joints. Thin wire makes final assembly much easier, particularly around the ESP32, OLED, buttons, speaker and battery.
 
-Before permanently placing parts, test-fit everything in the casing. The inside of the 3D-printed walkie casing is tight, so it helps to route wires before taping, gluing, or screwing modules down.
+Before placing parts permanently, test-fit all inside the casing. Internal space of the 3D-printed walkie is small, and it is useful to make routing of wires before taping, gluing or screwing any modules down.
 
 ### Power Wiring
 
-Build the battery power circuit first and verify the polarity before connecting the ESP32 or amplifier.
+Start with building the battery power circuit and verify the polarity before connecting ESP32 or amplifier.
 
-1. Connect the lithium battery positive and negative wires to the TP4056 battery pads.
-2. Connect the TP4056 output ground to the boost converter ground.
-3. Route the TP4056 output positive through the main power button or power switch.
-4. Connect the output of that power button/switch to the boost converter VCC/input positive.
-5. Connect the boost converter 5 V output to the ESP32 5V/VIN input and to the MAX9875A-style amplifier power input.
-6. Tie the grounds together so the ESP32, amplifier, OLED, microphone, buttons, LED, laser, boost converter, and TP4056 all share a common ground.
+1. Connect positive and negative wires of the lithium battery to the battery pads of the TP4056 module.
+2. Connect the ground of the TP4056 module to the ground of the boost converter.
+3. Route the output positive wire of the TP4056 module through the main power button or power switch.
+4. Connect the output of the power button/power switch to the VCC/input positive of the boost converter.
+5. Connect 5V output of the boost converter to the ESP32 5V/VIN input and to the MAX9875A style amplifier power input.
+6. Tie grounds together to provide common ground for the ESP32, amplifier, OLED, microphone, buttons, LED, laser, boost converter, and TP4056.
 
-Do not connect the boost converter 5 V output to the ESP32 `3V3` pin. Use the ESP32 board's `5V` or `VIN` input if your development board supports it. Lithium cells can be dangerous if shorted or wired incorrectly, so check the TP4056 labels carefully because different modules may label pads as `B+`, `B-`, `OUT+`, `OUT-`, `IN+`, and `IN-`.
+DO NOT connect the output of the boost converter to the ESP32 `3V3` pin. Use the ESP32 board's `5V` or `VIN` pin if available. Lithium cells are extremely dangerous and prone to explode if short-circuited or wired incorrectly. Please pay attention to the labels of the TP4056 module. They differ in marking battery and output pads as B+, B-, OUT+, OUT-, IN+, and IN-.
 
 ### Physical Placement
 
 1. Insert the TP4056 charging board into its slot first.
-2. After the components are soldered, place the ESP32 underneath the charging board, next to the battery.
-3. Put the six push buttons into their printed slots in the casing.
-4. Place the LED next to the PTT button where the small LED hole is located.
-5. Place the 3.3 V laser module in the laser hole.
-6. Place the potentiometer in the potentiometer hole.
-7. Make sure the external antenna is connected to the ESP32 antenna connector.
-8. Route the antenna into the antenna hole to the right of the potentiometer.
-9. Put the knob onto the potentiometer shaft.
+2. Once all the modules are soldered, put ESP32 under the charging board, near the battery.
+3. Put the 6 push buttons into their respective holes in the casing.
+4. Put the LED near the PTT button into the small LED hole.
+5. Put the 3.3V laser module into the laser hole.
+6. Put the potentiometer into the potentiometer hole.
+7. Make sure the external antenna is connected to the antenna connector on the ESP32.
+8. Route the antenna through the antenna hole to the right of the potentiometer.
+9. Screw the knob to the potentiometer shaft.
 10. Put the speaker into the speaker slot.
 11. Put the microphone into the microphone slot.
 12. Put the OLED into the OLED display slot.
 
-Once all parts are seated, close the casing carefully while watching for pinched wires. If the case does not close easily, do not force it; open it again and reroute the thickest wire bundles first. This was one of the biggest improvements in the grey second-iteration build: thinner wires made the internals cleaner, easier to close, and easier to repair.
+All done! Close the casing carefully, watching out for pinched wires. If the case cannot be closed easily, do not force it and re-rout thick wires first. This step was among the most important improvement in the grey second-iteration walkie: thin wires helped to simplify internal assembly, close the case, and make further repairs.
 
 ## Building Your Own
 
-Because this is open source, the intended path is:
+As this is an open-source project, the procedure is:
 
 1. Fork the repository.
-2. Review the circuit diagram and photos.
+2. Study the circuit diagram and photos.
 3. Add or modify CAD files in [`Walkie Talkie CAD files`](Walkie%20Talkie%20CAD%20files/).
-4. Wire one black-style or grey-style unit, or create a new board profile.
+4. Assemble one black-style or grey-style walkie, or create a new board profile.
 5. Set the correct peer MAC addresses in `menuconfig`.
 6. Build and flash the firmware.
-7. Test audio at short range first.
-8. Tune mic gain, speaker gain, channel, and antenna placement.
+7. Test audio at short distance first.
+8. Tune mic gain, speaker gain, channel and antenna placement.
 9. Test range outdoors with clear line of sight.
 
-If your wiring differs, add a new board profile instead of hardcoding changes over the existing black/grey profiles. That keeps the firmware easier for other builders to understand.
+If your wiring is different, add a new board profile instead of modifying the existing black/grey profiles directly. It will keep the firmware easier for other builders to understand.
 
 ## Future Work
 
-- Continue tuning long-range ESP-NOW voice using the onboard field logs, signal meter, redundancy counters, antenna placement, and outdoor range tests.
-- Expand the RC car app with finer speed steps, steering presets, and telemetry from the vehicle side.
-- Expand the Wi-Fi app modes for computer audio, remote control, or IoT experiments over normal Wi-Fi networks.
-- Experiment with full-duplex voice later. The ESP32 already has separate I2S microphone and speaker paths, but the radio protocol would need collision handling before both walkies can talk at the same time reliably.
-- Add more functional apps only when they have real behavior, keeping the main app carousel focused instead of crowded with placeholders.
+* Continue optimizing long-range ESP-NOW voice via onboard field logs, signal meter, redundancy counters, antenna placement, and outdoor range tests.
+* Further expand RC car app with more fine speed steps, steering presets, and telemetry from the vehicle side.
+* Expand WiFi app modes for computer audio, remote control, or IoT experiments over normal WiFi network.
+* Experiment with full-duplex voice communication later. ESP32 has independent I2S microphone and speaker paths already, but radio protocol will require collision handling to communicate simultaneously from both walkies.
+* Add apps only if they have working functionality. Leave the main app carousel clean and focused instead of overcrowding it with placeholders.
 
 ## License
 
-This project is released under the [MIT License](LICENSE).
+This project is licensed under the [MIT License](LICENSE).
