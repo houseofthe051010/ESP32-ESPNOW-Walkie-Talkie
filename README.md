@@ -429,7 +429,6 @@ Estimated runtime from 2000 mAh battery:
 | Lots of audio and frequent transmitting |   5 to 8 hours |
 | Near worst-case high draw               |   4 to 6 hours |
 
-If the system is using a linear regulator from 5 V supply to 3.3 V, the regulator burns away the difference between the voltages as heat. With 250 mA load the regulator consumes `(5.0 V - 3.3 V) * 0.25 A = 0.425 W`. For 350 mA load it dissipated `0.595 W`. It will get fairly hot in the small 3D-printed housing, so a buck regulator should be more efficient for extended battery life.
 
 Approximate subsystem current consumption:
 
@@ -466,41 +465,7 @@ Approximate subsystem current consumption:
 |        1 | set                                          | Solder, flux, tools                                                             |
 | optional | 3D printed brackets or mounts                | Put them in `Walkie Talkie CAD files`                                           |
 
-## Assembly Instructions
 
-First, solder all electronics outside of walkie-talkie casing. Make sure wires are long enough so modules can be placed in their places inside the casing without stressing solder joints. Thin wire makes final assembly much easier, particularly around the ESP32, OLED, buttons, speaker and battery.
-
-Before placing parts permanently, test-fit all inside the casing. Internal space of the 3D-printed walkie is small, and it is useful to make routing of wires before taping, gluing or screwing any modules down.
-
-### Power Wiring
-
-Start with building the battery power circuit and verify the polarity before connecting ESP32 or amplifier.
-
-1. Connect positive and negative wires of the lithium battery to the battery pads of the TP4056 module.
-2. Connect the ground of the TP4056 module to the ground of the boost converter.
-3. Route the output positive wire of the TP4056 module through the main power button or power switch.
-4. Connect the output of the power button/power switch to the VCC/input positive of the boost converter.
-5. Connect 5V output of the boost converter to the ESP32 5V/VIN input and to the MAX9875A style amplifier power input.
-6. Tie grounds together to provide common ground for the ESP32, amplifier, OLED, microphone, buttons, LED, laser, boost converter, and TP4056.
-
-DO NOT connect the output of the boost converter to the ESP32 `3V3` pin. Use the ESP32 board's `5V` or `VIN` pin if available. Lithium cells are extremely dangerous and prone to explode if short-circuited or wired incorrectly. Please pay attention to the labels of the TP4056 module. They differ in marking battery and output pads as B+, B-, OUT+, OUT-, IN+, and IN-.
-
-### Physical Placement
-
-1. Insert the TP4056 charging board into its slot first.
-2. Once all the modules are soldered, put ESP32 under the charging board, near the battery.
-3. Put the 6 push buttons into their respective holes in the casing.
-4. Put the LED near the PTT button into the small LED hole.
-5. Put the 3.3V laser module into the laser hole.
-6. Put the potentiometer into the potentiometer hole.
-7. Make sure the external antenna is connected to the antenna connector on the ESP32.
-8. Route the antenna through the antenna hole to the right of the potentiometer.
-9. Screw the knob to the potentiometer shaft.
-10. Put the speaker into the speaker slot.
-11. Put the microphone into the microphone slot.
-12. Put the OLED into the OLED display slot.
-
-All done! Close the casing carefully, watching out for pinched wires. If the case cannot be closed easily, do not force it and re-rout thick wires first. This step was among the most important improvement in the grey second-iteration walkie: thin wires helped to simplify internal assembly, close the case, and make further repairs.
 
 ## Building Your Own
 
@@ -516,7 +481,6 @@ As this is an open-source project, the procedure is:
 8. Tune mic gain, speaker gain, channel and antenna placement.
 9. Test range outdoors with clear line of sight.
 
-If your wiring is different, add a new board profile instead of modifying the existing black/grey profiles directly. It will keep the firmware easier for other builders to understand.
 
 ## Future Work
 
