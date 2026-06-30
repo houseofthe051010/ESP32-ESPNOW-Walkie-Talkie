@@ -144,11 +144,10 @@ Then, ESP32 was chosen with external antenna. It helped a lot since ESP32 has go
 
 ## Range Testing and Field Diagnostics
 
-Firmware is supposed to work in the field, not just in testing labs. Once packets start to drop because the walkies are too far apart, the radio layer will duplicate every audio frame to try once again. Sequence numbers of duplicated frames match, hence the receiver will play only one copy, not both.
+ Once packets start to drop because the walkies are too far apart, the radio layer will duplicate every audio frame to try once again. Sequence numbers of duplicated frames match, hence the receiver will play only one copy, not both.
 
 The receiver is able to detect missed sequence numbers of received packets. Very short intervals between missed frames result in packet loss concealment audio, hence fading the sound through the missing audio frames, not making any clicks or breaks. Longer intervals are audible, but at least they become measurable due to onboard logging.
 
-Every second, the walkie produces a small JSON line of telemetry about RSSI, link quality, jitter-buffer depth, duplicates, packet-loss concealment, send errors and wrong-channel/wrong-peer packets. These lines are printed to USB console when attached and recorded to onboard flash storage when the walkie is on the range. To view telemetry after the range test, hold `PTT + bottom-left` during power on to export `range.jsonl` file via serial port.
 
 ## Firmware Features
 
@@ -166,12 +165,6 @@ Every second, the walkie produces a small JSON line of telemetry about RSSI, lin
 * Light playground to try LED and 3.3 V laser module through strobe, target, rate, constant and preset modes;
 * Kid mode which locks walkie to the only channel and can be exited with holding OK for 2 seconds.
 
-Planned or experimental firmware ideas:
-
-* Wi-Fi talk mode for connecting walkie to any Wi-Fi network instead of just ESP-NOW;
-* TX-to-computer mode to send microphone audio or control packets from the walkie to the computer;
-* RX-from-computer mode to receive audio, commands or text from the computer and play/display it on the walkie;
-* Additional IoT control modes for lights, robots, sensors and other ESP32-based devices.
 
 ### User Interface
 
@@ -228,41 +221,6 @@ Example record:
 {"event":"radio_stats","t_ms":123456,"board":"BLACK","ch":1,"ptt":false,"link":true,"rssi_dbm":-82,"quality_pct":21,"jitter_frames":3,"vol_pct":50,"tx_audio":0,"tx_audio_dup":0,"tx_ctrl":2,"tx_no_mem":0,"tx_fail":0,"rx_audio":48,"rx_audio_dup":7,"rx_audio_old":0,"rx_plc":2,"rx_ctrl":1,"rx_wrong_peer":0,"rx_bad_proto":0,"rx_wrong_channel":0}
 ```
 
-Key fields:
-
-* `rssi_dbm` and `quality_pct` tell how strong the peer signal is;
-* `jitter_frames` tell how many decoded frames are waiting for playback;
-* `tx_audio_dup` tells how many duplicate audio packets were transmitted;
-* `rx_audio_dup` tells how many duplicate packets were received and silently dropped;
-* `rx_plc` tells how many PLC frames were created due to the lack of missing audio packets;
-* `tx_no_mem` and `tx_fail` indicate the failure to queue/sent packets by ESP-NOW;
-* `rx_wrong_channel`, `rx_bad_proto` and `rx_wrong_peer` help to diagnose possible misconfiguration or interference issues.
-
-In order to collect live logs when the computer is attached:
-
-```powershell
-idf.py -p COM6 monitor | Tee-Object range-test.jsonl
-```
-
-In order to dump the onboard flash logs later:
-
-1. Attach the walkie via USB;
-2. Hold `PTT` and `bottom-left`;
-3. Powercycle the walkie while pressing those two buttons;
-4. Open serial monitor and save its output.
-
-The dump will start with `field_log_dump_begin`, followed by printing the collected `radio_stats` JSON records and end with `field_log_dump_end`. The OK button is not used for this boot gesture intentionally since it is mapped to GPIO0 which is also the boot strap pin of ESP32.
-
-Also, it is possible to dump logs without resetting the walkie:
-
-1. Attach the walkie via USB serial;
-2. Open `APPS` and then `SETTINGS`;
-3. Scroll down to `DUMP LOGS`;
-4. Press `OK`: the firmware will print the logs right now over serial.
-
-The `FW VERSION` row of `SETTINGS` shows the currently flashed firmware version, currently `V0.5.4`.
-
-Both units should be using the firmware with de-duplication logic prior to performing weak-link redundancy tests. If only one walkie is flashed, the older receiver may interpret the duplicates of audio packets as new packets containing real repeated audio.
 
 ### Audio Transport
 
@@ -329,116 +287,6 @@ There is multiple processing steps inside the firmware in order to make ESP-NOW 
 | `sdkconfig.defaults`     | Default ESP-IDF project settings                                                                                                                                                        |
 | `CMakeLists.txt`         | Project definition of ESP-IDF                                                                                                                                                           |
 
-## Runtime Tasks
-
-The firmware is divided into several FreeRTOS tasks as follows:
-
-* `control_task` reads the buttons, updates menus, smoothes out the volume and battery measurements, sends heartbeats, updates the outputs, and redrawing the OLED.
-* `capture_task` executes when the PTT is pressed, reads the I2S microphone, processes the voice data, compresses it and transmits ESP-NOW audio frames.
-* `radio_task` processes ESP-NOW packets in the callback queue, handles the heartbeats, scans and audio frames.
-* `playback_task` drains the receive jitter buffer and feeds the decoded audio back into the I2S speaker path.
-
-This architecture ensures that the user interface remains responsive while the audio and radio operations keep running in the background.
-
-## Build and Flash
-
-Open the folder in VS Code with Espressif IDF extension, or use the ESP-IDF command line interface.
-
-### Configure the board
-
-Run:
-
-```powershell
-idf.py menuconfig
-```
-
-Then open:
-
-```text
-Walkie Talkie Configuration
-```
-
-Select either:
-
-* `Black walkie`
-* `Grey walkie`
-
-It will configure the correct PTT, LED, top-left, top-right buttons, battery smoothing, mic gain and peer MAC settings.
-
-### Build
-
-```powershell
-idf.py build
-```
-
-### Flash
-
-Replace `COM6` with your actual serial port:
-
-```powershell
-idf.py -p COM6 flash monitor
-```
-
-On this Windows development environment the Espressif tools can be loaded with:
-
-```powershell
-powershell -ExecutionPolicy Bypass -NoProfile -Command "& { . 'C:\Espressif\tools\Microsoft.662a3be.PowerShell_profile.ps1'; idf.py -p COM6 flash monitor }"
-```
-
-## Resource Usage
-
-The firmware runs on the ESP32 at 240 MHz with 4 MB flash. The most recent build of this project has used approximately:
-
-| Resource              | Approximate usage |
-| --------------------- | ----------------: |
-| Firmware app image    |           917 KiB |
-| App partition used    |        61 percent |
-| App partition free    |           583 KiB |
-| Flash code            |            686 KB |
-| Flash data            |            144 KB |
-| Static DRAM           |             45 KB |
-| Static DRAM remaining |            136 KB |
-| IRAM                  |             90 KB |
-| IRAM remaining        |             41 KB |
-
-Most of the flash memory usage is taken by ESP-IDF Wi-Fi, ESP-NOW, HTTP server and networking, not by the walkie application itself.
-
-The CPU runs at a constant 240 MHz speed in the current configuration because dynamic power management is disabled. The percentage displayed in the UI is a firmware activity indicator, not a measure of the actual CPU speed.
-
-## Power Usage and Battery Life
-
-The battery of the prototype has been 3.85 V nominal capacity high capacity lithium cell with about 2000 mAh capacity. The actual runtime varies depending on volume setting, transmit time, LEDs/lasers usage, Wi-Fi conditions, battery state of charge, regulator efficiency and speaker volume.
-
-Approximate current consumption:
-
-| Mode                                                        |                                          Estimated current |
-| ----------------------------------------------------------- | ---------------------------------------------------------: |
-| Idle/listening mode, OLED is on, no audio                   |                                              125 to 175 mA |
-| Receiving voice data at around 50 percent volume            |                                              180 to 270 mA |
-| PTT transmit mode with LED on, no audio playback            |                                              180 to 280 mA |
-| Worst case usage with RX audio, LED, laser and active Wi-Fi |                                      250 to 400 mA or more |
-| RC car mode, excluding servo motor current                  |                      Similar to Wi-Fi/ESP-NOW active modes |
-| MG996 servos drivetrain power                               | Can be hundreds of mA to even amps depending on load/stall |
-
-Estimated runtime from 2000 mAh battery:
-
-| Usage pattern                           |       Estimate |
-| --------------------------------------- | -------------: |
-| Mostly idle/listening                   | 11 to 16 hours |
-| Mixed receive/transmit operation        |  7 to 10 hours |
-| Lots of audio and frequent transmitting |   5 to 8 hours |
-| Near worst-case high draw               |   4 to 6 hours |
-
-
-Approximate subsystem current consumption:
-
-* ESP32 with Wi-Fi active: 100 to 240 mA depending on receive/transmit activity and RF power.
-* OLED: 10 to 25 mA depending on display and module.
-* LED: 13 mA.
-* Laser: 3 mA.
-* Audio amplifier at 50 percent volume: 50 to 90 mA average for loud voice, with higher peaks depending on speaker impedance and output volume.
-* MG996 drivetrain servos: powered from a separate high current 5 to 6 V rail, the walkie GPIOs only control the servos.
-
 ## Bill of Materials
 
 |      Qty | Part                                         | Notes                                                                           |
@@ -467,19 +315,6 @@ Approximate subsystem current consumption:
 
 
 
-## Building Your Own
-
-As this is an open-source project, the procedure is:
-
-1. Fork the repository.
-2. Study the circuit diagram and photos.
-3. Add or modify CAD files in [`Walkie Talkie CAD files`](Walkie%20Talkie%20CAD%20files/).
-4. Assemble one black-style or grey-style walkie, or create a new board profile.
-5. Set the correct peer MAC addresses in `menuconfig`.
-6. Build and flash the firmware.
-7. Test audio at short distance first.
-8. Tune mic gain, speaker gain, channel and antenna placement.
-9. Test range outdoors with clear line of sight.
 
 
 ## Future Work
@@ -488,7 +323,6 @@ As this is an open-source project, the procedure is:
 * Further expand RC car app with more fine speed steps, steering presets, and telemetry from the vehicle side.
 * Expand WiFi app modes for computer audio, remote control, or IoT experiments over normal WiFi network.
 * Experiment with full-duplex voice communication later. ESP32 has independent I2S microphone and speaker paths already, but radio protocol will require collision handling to communicate simultaneously from both walkies.
-* Add apps only if they have working functionality. Leave the main app carousel clean and focused instead of overcrowding it with placeholders.
 
 ## License
 
