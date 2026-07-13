@@ -58,6 +58,125 @@ I have used a custom 3D-printed walkie-talkie enclosure housing an ESP32 digital
 * Laser module operated on 3.3 V as manual output and part of lights app.
 * Voltage divider to feed ADC pin for battery voltage measurement.
 
+## Assembly Process
+
+### 1. Print and prepare the enclosure
+
+Print and clean the following parts from [`SOURCE CAD/INDIVIDUAL STLS`](SOURCE%20CAD/INDIVIDUAL%20STLS):
+
+* [`walkie_talkie_bottom_case.stl`](SOURCE%20CAD/INDIVIDUAL%20STLS/walkie_talkie_bottom_case.stl)
+* [`walkie_talkie_top_cover.stl`](SOURCE%20CAD/INDIVIDUAL%20STLS/walkie_talkie_top_cover.stl)
+* [`walkie_talkie_top_buttons_grid.stl`](SOURCE%20CAD/INDIVIDUAL%20STLS/walkie_talkie_top_buttons_grid.stl)
+* [`walkie_talkie_OK_button.stl`](SOURCE%20CAD/INDIVIDUAL%20STLS/walkie_talkie_OK_button.stl)
+* [`walkie_talkie_PTT_button.stl`](SOURCE%20CAD/INDIVIDUAL%20STLS/walkie_talkie_PTT_button.stl)
+* [`walkie_talkie_PTT_button_insert.stl`](SOURCE%20CAD/INDIVIDUAL%20STLS/walkie_talkie_PTT_button_insert.stl)
+
+Gather the ESP32-U board, external antenna, SSD1306 OLED, I2S microphone, MAX9875A-style amplifier, speaker, volume potentiometer, six pushbuttons, LED, 3.3 V laser, reclaimed 3.85 V battery, TP4056 charging/protection board, 5 V boost converter, power switch, battery-divider resistors, and 32 AWG signal wire before starting the wiring.
+
+Test-fit the printed buttons, OLED, LED, laser, speaker, USB connectors, antenna, and circuit boards in the enclosure. Clean the printed openings until each part sits flush and the two USB-C ports line up with the ESP32 programming connector and TP4056 charging connector.
+
+### 2. Build the power system
+
+Use the same battery-power topology as the Claw Drone controller:
+
+```text
+3.85 V battery
+      |
+      v
+TP4056 B+/B-
+      |
+TP4056 OUT+/OUT-
+      |
+Main power switch
+      |
+5 V boost converter
+      |
+ESP32 5V/VIN + amplifier power + OLED power rail
+```
+
+1. Connect the reclaimed battery to TP4056 `B+` and `B-`.
+2. Connect TP4056 `OUT+` to the main power switch and connect the switched output to the boost-converter positive input.
+3. Connect TP4056 `OUT-` directly to boost-converter ground.
+4. Set the boost-converter output to 5.0 V.
+5. Distribute the regulated 5 V output to the ESP32 `5V`/`VIN` pin, speaker amplifier, and OLED power input. Join the ESP32, amplifier, OLED, microphone, LED, laser, potentiometer, and button grounds into one common ground system.
+6. Install the battery-divider resistors between the battery rail, GPIO35, and ground using the values in the Black and Grey pin-assignment table.
+7. Glue the TP4056 and power switch into their printed mounts with both connectors aligned to their enclosure openings. Seat the battery in its tight printed compartment without adhesive.
+
+### 3. Solder the electronics outside the case
+
+Complete the ESP32 wiring before inserting the board into the enclosure. This keeps the solder pads accessible and prevents the finished wiring from becoming tangled inside the tight case.
+
+Use thin 32 AWG wire for the signal connections and cut every wire to its final routed length. Solder the following parts to the ESP32 using the pin tables below:
+
+1. Connect the SSD1306 OLED to GPIO18 SCL and GPIO19 SDA.
+2. Connect the I2S microphone to GPIO16 BCLK, GPIO17 WS, and GPIO4 SD. Tie the microphone L/R selection pin to ground for the left audio channel used by the firmware.
+3. Connect the speaker amplifier input to GPIO32 BCLK, GPIO33 WS/LRC, and GPIO25 DIN.
+4. Connect the speaker to the amplifier output terminals.
+5. Connect the volume potentiometer wiper to GPIO34, with its outer terminals connected to the analog reference rail and ground.
+6. Connect the OK button to GPIO0, bottom-left button to GPIO14, and bottom-right button to GPIO15. Connect the opposite terminal of every button to common ground.
+7. Connect the PTT, top-left, top-right, and LED pins according to the selected Black or Grey board profile.
+8. Connect the 3.3 V laser control to GPIO21.
+9. Connect the battery-divider midpoint to GPIO35.
+10. Complete a continuity test and confirm every component is soldered: microphone, amplifier, speaker, LED, laser, potentiometer, OLED, PTT button, OK button, and four navigation buttons.
+
+### 4. Install the front-panel parts
+
+1. Press the LED and laser into their printed holes.
+2. Install the PTT, OK, and four navigation buttons in their openings.
+3. Use a small amount of superglue around the outside of a button body when its fit is loose. Keep the adhesive outside the moving button mechanism. Excess glue inside the mechanism locks the button and can require reprinting the front case.
+4. Fit the printed PTT insert and top button grid over their switches and confirm free movement before closing the enclosure.
+5. Seat the OLED in the front opening and position the speaker behind its grille.
+
+### 5. Pack the electronics into the bottom case
+
+1. Route the completed wiring along the case walls and keep the audio, power, and signal bundles separated.
+2. Press the ESP32 firmly underneath the TP4056 mount until its USB-C programming port aligns with the lower case opening. The second opening aligns with the TP4056 charging port.
+3. Place the amplifier, microphone, potentiometer, and remaining wiring into their printed spaces without bending the solder joints.
+4. Connect the U.FL antenna to the ESP32-U board and route the antenna cable through the enclosure's antenna opening.
+5. Close the top cover only after the PTT, navigation buttons, potentiometer, speaker, microphone, OLED, LED, laser, power switch, programming port, and charging port all operate without mechanical interference.
+
+The enclosure has very little unused space, so the final packing stage requires careful wire placement and patience. The 32 AWG signal wiring keeps the harness compact enough to fit below the top cover.
+
+### 6. Build and flash the ESP-IDF firmware
+
+The repository is a complete ESP-IDF project: the root contains `CMakeLists.txt`, `sdkconfig.defaults`, `partitions.csv`, and the `main` component.
+
+1. Install ESP-IDF and open an ESP-IDF terminal with the environment configured.
+2. Change to the cloned project directory:
+
+   ```powershell
+   cd C:\Users\rshan\Documents\GitHub\ESP32-ESPNOW-Walkie-Talkie
+   ```
+
+3. Select the ESP32 target:
+
+   ```powershell
+   idf.py set-target esp32
+   ```
+
+4. Open the project configuration:
+
+   ```powershell
+   idf.py menuconfig
+   ```
+
+5. Open **Walkie Talkie Configuration**, select **Black walkie** or **Grey walkie**, and retain the matching peer MAC addresses and RF channel. Save the configuration and exit.
+6. Build the firmware:
+
+   ```powershell
+   idf.py build
+   ```
+
+7. Connect the ESP32 programming port and flash the board, replacing `COM5` with its Windows serial port:
+
+   ```powershell
+   idf.py -p COM5 flash monitor
+   ```
+
+8. Exit the serial monitor with `Ctrl+]`.
+9. Configure and flash one ESP32 with the Black profile, then repeat `menuconfig`, build, and flash for the second ESP32 with the Grey profile.
+10. Power both completed walkies, select the same logical channel, and confirm OLED startup, link status, PTT audio, speaker volume, buttons, LED, and laser functions.
+
 
 ## Circuit Diagram
 
@@ -311,7 +430,7 @@ There is multiple processing steps inside the firmware in order to make ESP-NOW 
 |        1 | set                                          | Thin silicone wire                                                              |
 |        1 | set                                          | Heat-shrink tubing/tape                                                         |
 |        1 | set                                          | Solder, flux, tools                                                             |
-| optional | 3D printed brackets or mounts                | Put them in `Walkie Talkie CAD files`                                           |
+| optional | 3D printed brackets or mounts                | Stored in `SOURCE CAD/INDIVIDUAL STLS`                                          |
 
 
 
