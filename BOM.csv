@@ -1,0 +1,23 @@
+Category,Quantity,Part,Specification
+Fabricated,2 sets,Walkie-talkie enclosure,3D-printed case buttons and inserts from SOURCE CAD/INDIVIDUAL STLS; one complete set per handheld
+Electronics,2,ESP32 development board,ESP32-WROOM-32U DevKit with 4 MB flash USB-C programming and U.FL external-antenna connector
+Radio,2,External antenna,2.4 GHz 50-ohm omnidirectional antenna with U.FL/IPEX connector
+Display,2,OLED display,0.96-inch 128 x 64 SSD1306 I2C OLED module
+Audio,2,I2S microphone,INMP441 omnidirectional MEMS I2S microphone module with L/R tied to ground
+Audio,2,I2S speaker amplifier,MAX98357A 3 W mono Class-D I2S amplifier module compatible with BCLK LRC and DIN signals
+Audio,2,Speaker,4-ohm 3 W miniature speaker sized to fit the printed enclosure
+Control,2,Volume potentiometer,10-kilohm linear-taper rotary potentiometer for ESP32 ADC input
+Power,2,Lithium battery,Single-cell 3.85 V nominal lithium-ion or lithium-polymer battery approximately 2000 mAh
+Power,2,Battery charger and protection board,TP4056 1S lithium charger module with protection and separate OUT+ and OUT- terminals
+Power,2,Boost converter,Adjustable DC-DC boost module set to regulated 5.0 V with at least 1 A output capability
+Power,2,Main power switch,SPST latching switch rated for the system input current
+Lighting,2,Status LED,Standard low-current indicator LED for PTT status and lights output
+Lighting,2,Laser module,3.3 V low-power laser diode module with integrated driver
+Control,12,Momentary pushbutton,Normally-open SPST tactile pushbutton; six per walkie for PTT OK and four navigation inputs
+Optional RC,2,Continuous-rotation servo,MG996R-class high-torque metal-gear servo modified for continuous rotation
+Measurement,2,Battery-divider resistor,100-kilohm resistor for the black walkie voltage divider
+Measurement,2,Battery-divider resistor,220-kilohm resistor for the grey walkie voltage divider
+Wiring,1 set,Signal and power wire,Thin flexible silicone-insulated wire including 32 AWG signal wire
+Consumable,1 set,Insulation materials,Heat-shrink tubing and electrical tape
+Consumable,1 set,Assembly supplies,Solder flux and electronics assembly tools
+Optional fabricated,As needed,Brackets and mounts,3D-printed brackets or mounts from SOURCE CAD/INDIVIDUAL STLS
