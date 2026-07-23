@@ -409,29 +409,32 @@ There is multiple processing steps inside the firmware in order to make ESP-NOW 
 
 ## Bill of Materials
 
-|      Qty | Part                                         | Notes                                                                           |
-| -------: | -------------------------------------------- | ------------------------------------------------------------------------------- |
-|        2 | 3D-printed walkie-talkie casings             | Main enclosure for each handheld unit                                           |
-|        2 | ESP32-U style development boards             | External antenna version highly recommended                                     |
-|        2 | 2.4 GHz external antennas                    | Improve range if mounted properly                                               |
-|        2 | SSD1306 OLED displays                        | I2C, connects to GPIO18/GPIO19                                                  |
-|        2 | I2S microphones                              | L/R connected to GND to capture left channel                                    |
-|        2 | MAX9875A style speaker amplifier modules     | I2S/audio output amplifier                                                      |
-|        2 | Small speakers                               | Fits inside the 3D-printed casing                                               |
-|        2 | Potentiometers                               | Analog volume control                                                           |
-|        2 | 3.85 V nominal lithium batteries             | Prototype used reclaimed 2000 mAh vape cells                                    |
-|        2 | TP4056 lithium charging/protection boards    | Highly recommended; preferably OUT+/OUT- style modules                          |
-|        2 | 5V boost converter modules                   | Boosts battery output to 5V for ESP32 VIN/5V and speaker amp                    |
-|        2 | Main power switches/buttons                  | Located between TP4056 output positive and boost converter VCC                  |
-|        2 | LEDs                                         | PTT/status/lights output                                                        |
-|        2 | 3.3V laser modules                           | Manual and lights-app output                                                    |
-|       12 | Momentary push buttons                       | 6 per walkie: PTT, OK, TL, TR, BL, BR                                           |
-|        2 | MG996 style continuous rotation servo motors | Optional RC car drivetrain controlled by the black walkie's GPIO1/GPIO3 outputs |
-|        4 | Battery divider resistors                    | Black: 100k/100k, grey: 220k/220k                                               |
-|        1 | set                                          | Thin silicone wire                                                              |
-|        1 | set                                          | Heat-shrink tubing/tape                                                         |
-|        1 | set                                          | Solder, flux, tools                                                             |
-| optional | 3D printed brackets or mounts                | Stored in `SOURCE CAD/INDIVIDUAL STLS`                                          |
+This table matches [BOM.csv](BOM.csv). Prices are AliExpress USD prices checked July 23, 2026, exclude shipping and tax, and may vary by option, account, and region. Multipack rows show the cost for the quantity used by this build. The enclosure price is a solid-volume estimate derived from the checked-in STL geometry using a PLA density of 1.24 g/cm³ and filament priced at $10.14/kg; normal infill can cost less.
+
+| Category | Quantity | Part | Link | Price |
+|---|---:|---|---|---:|
+| Fabricated | 2 sets | Walkie-talkie enclosure | [PLA filament](https://www.aliexpress.us/item/3256806989098121.html) | $2.22 estimated (219 g solid PLA) |
+| Electronics | 2 | ESP32 development board | [AliExpress](https://www.aliexpress.us/item/3256807617923920.html) | $1.90 used (2 at $0.95 each) |
+| Radio | 2 | External antenna | [AliExpress](https://www.aliexpress.us/item/3256812004598286.html) | $0.64 used (2 of 10-pack at $3.21) |
+| Display | 2 | OLED display | [AliExpress](https://www.aliexpress.us/item/3256805954920554.html) | $1.98 used (2 at $0.99 each) |
+| Audio | 2 | I2S microphone | [AliExpress](https://www.aliexpress.us/item/3256810210666726.html) | $6.45 (2-pack) |
+| Audio | 2 | I2S speaker amplifier | [AliExpress](https://www.aliexpress.us/item/3256809715431644.html) | $1.88 used (2 at $0.94 each) |
+| Audio | 2 | Speaker | [AliExpress](https://www.aliexpress.us/item/3256805151989671.html) | $0.99 (2-pack) |
+| Control | 2 | Volume potentiometer | [AliExpress](https://www.aliexpress.us/item/3256805703535495.html) | $0.99 (2-pack) |
+| Power | 2 | Lithium battery | [AliExpress](https://www.aliexpress.us/item/3256811489152615.html) | $10.96 used (2 at $5.48 each) |
+| Power | 2 | Battery charger and protection board | [AliExpress](https://www.aliexpress.us/item/3256809139500038.html) | $0.20 used (2 of 10-pack at $0.99) |
+| Power | 2 | Boost converter | [AliExpress](https://www.aliexpress.us/item/3256811757076890.html) | $1.88 used (2 at $0.94 each) |
+| Power | 2 | Main power switch | [AliExpress](https://www.aliexpress.us/item/3256809823421130.html) | $2.37 (2-pack) |
+| Lighting | 2 | Status LED | [AliExpress](https://www.aliexpress.us/item/3256807537207911.html) | $0.02 used (2 of 100-pack at $1.22) |
+| Lighting | 2 | Laser module | [AliExpress](https://www.aliexpress.us/item/3256808318801769.html) | $0.99 (2-pack) |
+| Control | 12 | Momentary pushbutton | [AliExpress](https://www.aliexpress.us/item/3256810479380665.html) | $0.99 (24-switch kit) |
+| Optional RC | 2 | Continuous-rotation servo | [AliExpress](https://www.aliexpress.us/item/3256804365417662.html) | $9.28 (2-pack) |
+| Measurement | 2 | 100-kilohm battery-divider resistor | [AliExpress](https://www.aliexpress.us/item/3256802303553096.html) | $0.02 used (2 of 100-pack at $0.90) |
+| Measurement | 2 | 220-kilohm battery-divider resistor | [AliExpress](https://www.aliexpress.us/item/3256802303553096.html) | $0.02 used (2 of 100-pack at $0.90) |
+| Wiring | 1 set | Signal and power wire | [AliExpress](https://www.aliexpress.us/item/3256810394181790.html) | $0.99 allowance |
+| Consumable | 1 set | Insulation materials | [AliExpress](https://www.aliexpress.us/item/3256810151179232.html) | $0.99 allowance |
+| Consumable | 1 set | Assembly supplies | [AliExpress](https://www.aliexpress.us/item/3256812225038383.html) | $0.99 allowance |
+| Optional fabricated | As needed | Brackets and mounts | [PLA filament](https://www.aliexpress.us/item/3256806989098121.html) | $10.14 allowance (1 kg PLA spool) |
 
 
 

@@ -1,23 +1,23 @@
-Category,Quantity,Part,Specification
-Fabricated,2 sets,Walkie-talkie enclosure,3D-printed case buttons and inserts from SOURCE CAD/INDIVIDUAL STLS; one complete set per handheld
-Electronics,2,ESP32 development board,ESP32-WROOM-32U DevKit with 4 MB flash USB-C programming and U.FL external-antenna connector
-Radio,2,External antenna,2.4 GHz 50-ohm omnidirectional antenna with U.FL/IPEX connector
-Display,2,OLED display,0.96-inch 128 x 64 SSD1306 I2C OLED module
-Audio,2,I2S microphone,INMP441 omnidirectional MEMS I2S microphone module with L/R tied to ground
-Audio,2,I2S speaker amplifier,MAX98357A 3 W mono Class-D I2S amplifier module compatible with BCLK LRC and DIN signals
-Audio,2,Speaker,4-ohm 3 W miniature speaker sized to fit the printed enclosure
-Control,2,Volume potentiometer,10-kilohm linear-taper rotary potentiometer for ESP32 ADC input
-Power,2,Lithium battery,Single-cell 3.85 V nominal lithium-ion or lithium-polymer battery approximately 2000 mAh
-Power,2,Battery charger and protection board,TP4056 1S lithium charger module with protection and separate OUT+ and OUT- terminals
-Power,2,Boost converter,Adjustable DC-DC boost module set to regulated 5.0 V with at least 1 A output capability
-Power,2,Main power switch,SPST latching switch rated for the system input current
-Lighting,2,Status LED,Standard low-current indicator LED for PTT status and lights output
-Lighting,2,Laser module,3.3 V low-power laser diode module with integrated driver
-Control,12,Momentary pushbutton,Normally-open SPST tactile pushbutton; six per walkie for PTT OK and four navigation inputs
-Optional RC,2,Continuous-rotation servo,MG996R-class high-torque metal-gear servo modified for continuous rotation
-Measurement,2,Battery-divider resistor,100-kilohm resistor for the black walkie voltage divider
-Measurement,2,Battery-divider resistor,220-kilohm resistor for the grey walkie voltage divider
-Wiring,1 set,Signal and power wire,Thin flexible silicone-insulated wire including 32 AWG signal wire
-Consumable,1 set,Insulation materials,Heat-shrink tubing and electrical tape
-Consumable,1 set,Assembly supplies,Solder flux and electronics assembly tools
-Optional fabricated,As needed,Brackets and mounts,3D-printed brackets or mounts from SOURCE CAD/INDIVIDUAL STLS
+Category,Quantity,Part,Link,Price
+Fabricated,2 sets,Walkie-talkie enclosure,https://www.aliexpress.us/item/3256806989098121.html,$2.22 estimated (219 g solid PLA)
+Electronics,2,ESP32 development board,https://www.aliexpress.us/item/3256807617923920.html,$1.90 used (2 at $0.95 each)
+Radio,2,External antenna,https://www.aliexpress.us/item/3256812004598286.html,$0.64 used (2 of 10-pack at $3.21)
+Display,2,OLED display,https://www.aliexpress.us/item/3256805954920554.html,$1.98 used (2 at $0.99 each)
+Audio,2,I2S microphone,https://www.aliexpress.us/item/3256810210666726.html,$6.45 (2-pack)
+Audio,2,I2S speaker amplifier,https://www.aliexpress.us/item/3256809715431644.html,$1.88 used (2 at $0.94 each)
+Audio,2,Speaker,https://www.aliexpress.us/item/3256805151989671.html,$0.99 (2-pack)
+Control,2,Volume potentiometer,https://www.aliexpress.us/item/3256805703535495.html,$0.99 (2-pack)
+Power,2,Lithium battery,https://www.aliexpress.us/item/3256811489152615.html,$10.96 used (2 at $5.48 each)
+Power,2,Battery charger and protection board,https://www.aliexpress.us/item/3256809139500038.html,$0.20 used (2 of 10-pack at $0.99)
+Power,2,Boost converter,https://www.aliexpress.us/item/3256811757076890.html,$1.88 used (2 at $0.94 each)
+Power,2,Main power switch,https://www.aliexpress.us/item/3256809823421130.html,$2.37 (2-pack)
+Lighting,2,Status LED,https://www.aliexpress.us/item/3256807537207911.html,$0.02 used (2 of 100-pack at $1.22)
+Lighting,2,Laser module,https://www.aliexpress.us/item/3256808318801769.html,$0.99 (2-pack)
+Control,12,Momentary pushbutton,https://www.aliexpress.us/item/3256810479380665.html,$0.99 (24-switch kit)
+Optional RC,2,Continuous-rotation servo,https://www.aliexpress.us/item/3256804365417662.html,$9.28 (2-pack)
+Measurement,2,100-kilohm battery-divider resistor,https://www.aliexpress.us/item/3256802303553096.html,$0.02 used (2 of 100-pack at $0.90)
+Measurement,2,220-kilohm battery-divider resistor,https://www.aliexpress.us/item/3256802303553096.html,$0.02 used (2 of 100-pack at $0.90)
+Wiring,1 set,Signal and power wire,https://www.aliexpress.us/item/3256810394181790.html,$0.99 allowance
+Consumable,1 set,Insulation materials,https://www.aliexpress.us/item/3256810151179232.html,$0.99 allowance
+Consumable,1 set,Assembly supplies,https://www.aliexpress.us/item/3256812225038383.html,$0.99 allowance
+Optional fabricated,As needed,Brackets and mounts,https://www.aliexpress.us/item/3256806989098121.html,$10.14 allowance (1 kg PLA spool)
