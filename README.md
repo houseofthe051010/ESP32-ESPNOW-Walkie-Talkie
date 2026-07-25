@@ -9,8 +9,11 @@ Source:
 
 ## Project Description
 
+This is a ESP32 walkie talkie that uses WIFi (ESPNOW) for long range communication. It uses the esp32-wroom-32-U with an external U.fl connector, OLED 0.96 I2C display, I2S INMP441 microphone, I2S MAX98357A 3W speaker amplifier, 10k volume potentiometer, PTT button + 5 menu buttons, LASER, and LED. The aim of this walkie talkie was to not just serve as a walkie talkie, but sort of like a custom flipper zero that was more wireless oriented, although the walkie talkie comes with 3 female dupont pins that can be plugged in externally for a UART connection.
 
-The current implementation utilizes the ESP32-U type of board with external antenna, OLED screen, I2S microphone, I2S speaker amplifier, volume potentiometer, GPIO buttons, laser and LED. The aim of this project is to create a compact two-way voice communicator with phone-like user interface, channel selection, link check, battery monitoring, lights control and experimental long-distance ESP-NOW voice radio.
+This device was framed as a walkie talkie but it can be used as a Wi-Fi/IoT device handheld controller platform. This is the main advantage with WIFI on esp32s as you can connect to a lot of places.
+
+
 
 ### Features
 
@@ -25,11 +28,8 @@ The current implementation utilizes the ESP32-U type of board with external ante
 * OLED interface for channels, link, signal, battery, volume, RX/PTT status, application menu, settings, lights control and kid mode.
 * Firmware, wiring information, build pictures and CAD documentation to fork and evolve this project.
 
-## More Than a Walkie Talkie
 
-Despite being mostly a two-way voice communicator, this project can be used as a Wi-Fi/IoT device handheld controller platform. With buttons, display, audio hardware, ESP-NOW radio and regular Wi-Fi capability the same hardware can be re-purposed for controlling IoT/Wi-Fi devices.
 
-This firmware supports an `RCAR` application to control an RC or tank drive train. Black walkie can operate two MG996-type continuous rotation servos via GPIO1 and GPIO3 pins. Grey walkie can serve as the handheld remote over ESP-NOW radio. Walkie enclosure turns out to be a handheld controller with integrated voice channel.
 
 <p align="center">
   <img src="Assets/readme/both-walkies-second.jpg" alt="Second side-by-side photo of both ESP32 walkie talkies" width="900">
@@ -37,14 +37,14 @@ This firmware supports an `RCAR` application to control an RC or tank drive trai
 
 ## Walkie Talkie Hardware
 
-I have used a custom 3D-printed walkie-talkie enclosure housing an ESP32 digital audio hardware system.
+The enclosure was designed to have enough space to solder every wire, but a custom PCB version was also made.
 
 <p align="center">
   <img src="Assets/readme/grey-walkie-only.jpg" alt="Grey ESP32 walkie talkie" width="420">
   <img src="Assets/readme/black-walkie-only.jpg" alt="Black ESP32 walkie talkie" width="420">
 </p>
 
-### Main Electronics
+### Electronics
 
 * ESP32-U type development board with 240 MHz CPU, 4 MB flash memory, ~512 KB of internal SRAM, Wi-Fi, Bluetooth hardware and external antenna connection.
 * OLED display for full interface.
@@ -314,19 +314,6 @@ The receiver is able to detect missed sequence numbers of received packets. Very
   <em>Settings page with mic sensitivity enabled, and light playground strobe screen for LED/laser effects.</em>
 </p>
 
-### Radio and Link System
-
-* ESP-NOW used as peer-to-peer protocol;
-* Logical channel number 1-20 in each packet;
-* RF channel from ESP-IDF config, default channel is 6;
-* Heartbeat packets are sent so that PTT screen can show `LINK ON` or `LINK OFF`;
-* RSSI from received ESP-NOW packet metadata is read if possible;
-* Smoothed RSSI converted into the signal-quality percentage for signal meter on the left side;
-* Duplicated audio packets with the same sequence number are sent when link is weak, providing second chance to receive frame before it's time to play;
-* Repeated sequence numbers are deduplicated on receive side to not replay the same 20 ms audio frame twice due to redundancy;
-* Request maximum ESP32 Wi-Fi transmit power with `esp_wifi_set_max_tx_power(84)`;
-* Wi-Fi power saving mode is disabled for more consistent latency;
-* Configure ESP-NOW peer with ESP32 long-range PHY rate.
 
 ### Range Debug Logging
 
@@ -437,16 +424,3 @@ This table matches [BOM.csv](BOM.csv). Prices are AliExpress USD prices checked 
 | Optional fabricated | As needed | Brackets and mounts | [PLA filament](https://www.aliexpress.us/item/3256806989098121.html) | $10.14 allowance (1 kg PLA spool) |
 
 
-
-
-
-## Future Work
-
-* Continue optimizing long-range ESP-NOW voice via onboard field logs, signal meter, redundancy counters, antenna placement, and outdoor range tests.
-* Further expand RC car app with more fine speed steps, steering presets, and telemetry from the vehicle side.
-* Expand WiFi app modes for computer audio, remote control, or IoT experiments over normal WiFi network.
-* Experiment with full-duplex voice communication later. ESP32 has independent I2S microphone and speaker paths already, but radio protocol will require collision handling to communicate simultaneously from both walkies.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
