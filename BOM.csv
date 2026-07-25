@@ -1,23 +1,20 @@
 Category,Quantity,Part,Link,Price
-Fabricated,2 sets,Walkie-talkie enclosure,https://www.aliexpress.us/item/3256806989098121.html,$2.22 estimated (219 g solid PLA)
-Electronics,2,ESP32 development board,https://www.aliexpress.us/item/3256807617923920.html,$1.90 used (2 at $0.95 each)
-Radio,2,External antenna,https://www.aliexpress.us/item/3256812004598286.html,$0.64 used (2 of 10-pack at $3.21)
-Display,2,OLED display,https://www.aliexpress.us/item/3256805954920554.html,$1.98 used (2 at $0.99 each)
-Audio,2,I2S microphone,https://www.aliexpress.us/item/3256810210666726.html,$6.45 (2-pack)
-Audio,2,I2S speaker amplifier,https://www.aliexpress.us/item/3256809715431644.html,$1.88 used (2 at $0.94 each)
-Audio,2,Speaker,https://www.aliexpress.us/item/3256805151989671.html,$0.99 (2-pack)
-Control,2,Volume potentiometer,https://www.aliexpress.us/item/3256805703535495.html,$0.99 (2-pack)
-Power,2,Lithium battery,https://www.aliexpress.us/item/3256811489152615.html,$10.96 used (2 at $5.48 each)
-Power,2,Battery charger and protection board,https://www.aliexpress.us/item/3256809139500038.html,$0.20 used (2 of 10-pack at $0.99)
-Power,2,Boost converter,https://www.aliexpress.us/item/3256811757076890.html,$1.88 used (2 at $0.94 each)
-Power,2,Main power switch,https://www.aliexpress.us/item/3256809823421130.html,$2.37 (2-pack)
-Lighting,2,Status LED,https://www.aliexpress.us/item/3256807537207911.html,$0.02 used (2 of 100-pack at $1.22)
-Lighting,2,Laser module,https://www.aliexpress.us/item/3256808318801769.html,$0.99 (2-pack)
-Control,12,Momentary pushbutton,https://www.aliexpress.us/item/3256810479380665.html,$0.99 (24-switch kit)
-Optional RC,2,Continuous-rotation servo,https://www.aliexpress.us/item/3256804365417662.html,$9.28 (2-pack)
-Measurement,2,100-kilohm battery-divider resistor,https://www.aliexpress.us/item/3256802303553096.html,$0.02 used (2 of 100-pack at $0.90)
-Measurement,2,220-kilohm battery-divider resistor,https://www.aliexpress.us/item/3256802303553096.html,$0.02 used (2 of 100-pack at $0.90)
-Wiring,1 set,Signal and power wire,https://www.aliexpress.us/item/3256810394181790.html,$0.99 allowance
-Consumable,1 set,Insulation materials,https://www.aliexpress.us/item/3256810151179232.html,$0.99 allowance
-Consumable,1 set,Assembly supplies,https://www.aliexpress.us/item/3256812225038383.html,$0.99 allowance
-Optional fabricated,As needed,Brackets and mounts,https://www.aliexpress.us/item/3256806989098121.html,$10.14 allowance (1 kg PLA spool)
+Fabricated,2 ,Walkie-talkie enclosure,https://www.aliexpress.us/item/3256806989098121.html,$2.22 
+Electronics,2,ESP32 development board,https://www.aliexpress.us/item/3256807617923920.html,$1.90 
+Radio,2,External antenna,https://www.aliexpress.us/item/3256812004598286.html,$0.64 used 
+Display,2,OLED display,https://www.aliexpress.us/item/3256805954920554.html,$1.98 used 
+Audio,2,I2S microphone,https://www.aliexpress.us/item/3256810210666726.html,$6.45 
+Audio,2,I2S speaker amplifier,https://www.aliexpress.us/item/3256809715431644.html,$1.88 used
+Audio,2,Speaker,https://www.aliexpress.us/item/3256805151989671.html,$0.99 
+Control,2,Volume potentiometer,https://www.aliexpress.us/item/3256805703535495.html,$0.99 
+Power,2,Lithium battery,https://www.aliexpress.us/item/3256811489152615.html,$10.96 used 
+Power,2,Battery charger and protection board,https://www.aliexpress.us/item/3256809139500038.html,$0.20 used 
+Power,2,Boost converter,https://www.aliexpress.us/item/3256811757076890.html,$1.88 used 
+Power,2,Main power switch,https://www.aliexpress.us/item/3256809823421130.html,$2.37 
+Lighting,2,Status LED,https://www.aliexpress.us/item/3256807537207911.html,$0.02 used 
+Lighting,2,Laser module,https://www.aliexpress.us/item/3256808318801769.html,$0.99 
+Control,12,Momentary pushbutton,https://www.aliexpress.us/item/3256810479380665.html,$0.99 
+Optional RC,2,Continuous-rotation servo,https://www.aliexpress.us/item/3256804365417662.html,$9.28 
+Measurement,2,100-kilohm battery-divider resistor,https://www.aliexpress.us/item/3256802303553096.html,$0.02 used 
+Measurement,2,220-kilohm battery-divider resistor,https://www.aliexpress.us/item/3256802303553096.html,$0.02 used
+Wiring,1 ,Signal and power wire,https://www.aliexpress.us/item/3256810394181790.html,$0.99 allowance
