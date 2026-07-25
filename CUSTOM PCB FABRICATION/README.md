@@ -12,7 +12,7 @@ Main board:
 
 Front/user-interface board:
 
-![Front board PCB preview](../Assets/FRONBOARD_PCB_PICTURE.png)
+![Front board PCB preview](../Assets/FRONTBOARD_PCB_PICTURE.png)
 
 ## Why Use a Custom PCB?
 
@@ -57,6 +57,26 @@ For PCB assembly, also upload:
 - Correct JLCPCB/LCSC part numbers for all assembled components
 
 Before ordering, inspect the online Gerber viewer carefully. Check that the board outline, holes, USB-C opening alignment, mounting holes, and connector locations match the 3D printed casing.
+
+## Manufacturer Files
+
+The exported quote/manufacturing files are organized by PCB:
+
+### Main PCB
+
+- [Gerber/drill ZIP](MANUFACTOR%20FILES/MAIN%20PCB/WalkieTalkie_Main_Gerbers_Drill.zip)
+- [JLCPCB BOM CSV](MANUFACTOR%20FILES/MAIN%20PCB/WalkieTalkie_Main_JLCPCB_BOM.csv)
+- [JLCPCB CPL / position CSV](MANUFACTOR%20FILES/MAIN%20PCB/WalkieTalkie_Main_JLCPCB_CPL.csv)
+
+### Front PCB
+
+- [Gerber/drill ZIP](MANUFACTOR%20FILES/FRONT%20PCB/WalkieTalkie_Front_Gerbers_Drill.zip)
+- [JLCPCB BOM CSV](MANUFACTOR%20FILES/FRONT%20PCB/WalkieTalkie_Front_JLCPCB_BOM.csv)
+- [JLCPCB CPL / position CSV](MANUFACTOR%20FILES/FRONT%20PCB/WalkieTalkie_Front_JLCPCB_CPL.csv)
+
+For a quick bare-board quote, upload only the matching Gerber/drill ZIP. For an assembly quote, upload the Gerber/drill ZIP plus the matching BOM and CPL files.
+
+Important: treat these files as quote/draft files until the KiCad DRC is clean and all intended JLCPCB assembly parts have LCSC numbers. The current BOM exports may still include blank LCSC fields for common passives or hand-soldered/mechanical parts.
 
 ## Parts JLCPCB Can Usually Assemble
 

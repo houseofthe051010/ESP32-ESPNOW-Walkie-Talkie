@@ -1,0 +1,23 @@
+Drill report for WalkieTalkie_Front.kicad_pcb
+Created on 2026-07-25T17:27:06
+
+Copper Layer Stackup:
+    =============================================================
+    L1 :  F.Cu                      front
+    L2 :  B.Cu                      back
+
+
+Drill file 'WalkieTalkie_Front-PTH.drl' contains
+    plated through holes:
+    =============================================================
+    T1  1.050mm  0.0413"  (4 holes))
+    T2  2.500mm  0.0984"  (4 holes))
+
+    Total plated holes count 8
+
+
+Drill file 'WalkieTalkie_Front-NPTH.drl' contains
+    unplated through holes:
+    =============================================================
+
+    Total unplated holes count 0

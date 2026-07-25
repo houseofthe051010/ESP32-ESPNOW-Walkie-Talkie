@@ -1,0 +1,42 @@
+%TF.GenerationSoftware,KiCad,Pcbnew,10.0.4*%
+%TF.CreationDate,2026-07-25T17:27:06-04:00*%
+%TF.ProjectId,WalkieTalkie_Front,57616c6b-6965-4546-916c-6b69655f4672,rev?*%
+%TF.SameCoordinates,Original*%
+%TF.FileFunction,Copper,L2,Bot*%
+%TF.FilePolarity,Positive*%
+%FSLAX46Y46*%
+G04 Gerber Fmt 4.6, Leading zero omitted, Abs format (unit mm)*
+G04 Created by KiCad (PCBNEW 10.0.4) date 2026-07-25 17:27:06*
+%MOMM*%
+%LPD*%
+G01*
+G04 APERTURE LIST*
+%TA.AperFunction,ComponentPad*%
+%ADD10C,2.500000*%
+%TD*%
+%TA.AperFunction,ComponentPad*%
+%ADD11C,1.800000*%
+%TD*%
+G04 APERTURE END LIST*
+D10*
+%TO.P,U201,*%
+%TO.N,*%
+X77750000Y-73300000D03*
+X77750000Y-97100000D03*
+X101050000Y-73300000D03*
+X101050000Y-97100000D03*
+D11*
+%TO.P,U201,1,GND_1*%
+%TO.N,/GND*%
+X85590000Y-72740000D03*
+%TO.P,U201,2,VCC_2*%
+%TO.N,/+3V3*%
+X88130000Y-72740000D03*
+%TO.P,U201,3,SCL_3*%
+%TO.N,/GPIO18_OLED_SCL*%
+X90670000Y-72740000D03*
+%TO.P,U201,4,SDA_4*%
+%TO.N,/GPIO19_OLED_SDA*%
+X93210000Y-72740000D03*
+%TD*%
+M02*

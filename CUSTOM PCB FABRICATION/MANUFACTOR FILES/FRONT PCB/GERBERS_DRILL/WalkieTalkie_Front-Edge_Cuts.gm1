@@ -1,0 +1,23 @@
+%TF.GenerationSoftware,KiCad,Pcbnew,10.0.4*%
+%TF.CreationDate,2026-07-25T17:27:06-04:00*%
+%TF.ProjectId,WalkieTalkie_Front,57616c6b-6965-4546-916c-6b69655f4672,rev?*%
+%TF.SameCoordinates,Original*%
+%TF.FileFunction,Profile,NP*%
+%FSLAX46Y46*%
+G04 Gerber Fmt 4.6, Leading zero omitted, Abs format (unit mm)*
+G04 Created by KiCad (PCBNEW 10.0.4) date 2026-07-25 17:27:06*
+%MOMM*%
+%LPD*%
+G01*
+G04 APERTURE LIST*
+%TA.AperFunction,Profile*%
+%ADD10C,0.050000*%
+%TD*%
+G04 APERTURE END LIST*
+D10*
+X65880000Y-63480000D02*
+X110880000Y-63480000D01*
+X110880000Y-128480000D01*
+X65880000Y-128480000D01*
+X65880000Y-63480000D01*
+M02*
