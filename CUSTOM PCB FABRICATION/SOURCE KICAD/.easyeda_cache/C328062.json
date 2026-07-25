@@ -1,0 +1,53 @@
+{
+  "success": true,
+  "code": 0,
+  "result": {
+    "uuid": "6528a688311e481689ec4d5e17aa7ecd",
+    "title": "ESP32-WROOM-32U",
+    "description": "",
+    "docType": 2,
+    "type": 3,
+    "thumb": "//image.lceda.cn/components/6528a688311e481689ec4d5e17aa7ecd.png",
+    "lcsc": {
+      "id": 308124,
+      "number": "C328062",
+      "step": 1,
+      "min": 1,
+      "price": 3.259091,
+      "stock": 8,
+      "url": "https://lcsc.com/product-detail/_Espressif-Systems-ESP32-WROOM-32U_C328062.html"
+    },
+    "szlcsc": {
+      "id": 308124,
+      "number": "C328062",
+      "step": 1,
+      "min": 1,
+      "price": 21.51,
+      "stock": 1593,
+      "url": "http://www.szlcsc.com/product/details_308124.html"
+    },
+    "owner": {
+      "uuid": "0819f05c4eef4c71ace90d822a990e87",
+      "username": "LCSC",
+      "nickname": "LCSC",
+      "avatar": "//image.lceda.cn/avatars/2018/6/kFlrasi7W06gTdBLAqW3fkrqbDhbowynuSzkjqso.png"
+    },
+    "tags": [
+      "WiFi Modules"
+    ],
+    "updateTime": 1732011627,
+    "updated_at": "2026-07-18 04:57:20",
+    "dataStr": {
+      "head": {
+        "docType": "2",
+        "editorVersion": "6.5.23",
+        "x": 465,
+        "y": 250,
+        "c_para": {
+          "pre": "U?",
+          "name": "ESP32-WROOM-32U",
+          "package": "WIFIM-SMD_38P-L19.2-W18.0-P1.27",
+          "Contributor": "LCSC",
+          "Supplier": "LCSC",
+          "Supplier Part": "C328062",
+          "Manufacturer": 

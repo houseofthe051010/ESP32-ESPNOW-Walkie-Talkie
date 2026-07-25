@@ -1,0 +1,43 @@
+{
+  "success": true,
+  "code": 0,
+  "result": {
+    "uuid": "4839e600161745f1af0afe53dafb495c",
+    "title": "HS96L03W2C03",
+    "description": "",
+    "docType": 2,
+    "type": 3,
+    "thumb": "/component/4839e600161745f1af0afe53dafb495c.png",
+    "lcsc": {
+      "id": 5960631,
+      "number": "C5248080"
+    },
+    "szlcsc": {
+      "id": 5960631,
+      "number": "C5248080"
+    },
+    "owner": {
+      "uuid": "0819f05c4eef4c71ace90d822a990e87",
+      "username": "lcsc",
+      "nickname": "LCSC",
+      "avatar": "//image.lceda.cn/avatars/2018/6/kFlrasi7W06gTdBLAqW3fkrqbDhbowynuSzkjqso.png"
+    },
+    "tags": [
+      "OLED Displays Modules"
+    ],
+    "updateTime": 1711105002,
+    "updated_at": "2026-07-13 15:03:19",
+    "dataStr": {
+      "head": {
+        "docType": "2",
+        "editorVersion": "6.5.28",
+        "x": 400,
+        "y": 300,
+        "c_para": {
+          "pre": "U?",
+          "name": "HS96L03W2C03",
+          "package": "OLED-TH_L27.8-W27.2-P2.54_C9900033791",
+          "Contributor": "lcsc",
+          "Supplier": "LCSC",
+          "Supplier Part": "C5248080",
+          "Manufacturer": 

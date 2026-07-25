@@ -1,0 +1,42 @@
+{
+  "success": true,
+  "code": 0,
+  "result": {
+    "uuid": "1218d09d40ff4b7e9ab8e911aa827d9f",
+    "title": "TP4056_C20199357",
+    "description": "",
+    "docType": 2,
+    "type": 3,
+    "thumb": "//image.lceda.cn/components/1218d09d40ff4b7e9ab8e911aa827d9f.png",
+    "lcsc": {
+      "id": 21524593,
+      "number": "C20199357"
+    },
+    "szlcsc": {
+      "id": 21524593,
+      "number": "C20199357"
+    },
+    "owner": {
+      "uuid": "0819f05c4eef4c71ace90d822a990e87",
+      "username": "lcsc",
+      "nickname": "LCSC",
+      "avatar": "//image.lceda.cn/avatars/2018/6/kFlrasi7W06gTdBLAqW3fkrqbDhbowynuSzkjqso.png"
+    },
+    "tags": [
+      "Battery Management ICs"
+    ],
+    "updateTime": 1744303612,
+    "updated_at": "2026-06-07 07:46:25",
+    "dataStr": {
+      "head": {
+        "docType": "2",
+        "editorVersion": "6.5.48",
+        "x": 400,
+        "y": 300,
+        "c_para": {
+          "pre": "U?",
+          "name": "TP4056_C20199357",
+          "package": "ESOP-8_L4.9-W3.9-P1.27-LS6.0-BL-EP-4",
+          "Supplier": "LCSC",
+          "Supplier Part": "C20199357",
+          "Manufacturer": 

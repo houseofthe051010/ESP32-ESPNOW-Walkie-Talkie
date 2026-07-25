@@ -1,0 +1,50 @@
+{
+  "success": true,
+  "code": 0,
+  "result": {
+    "uuid": "8b8f2c4b0f1a4c05b9bf99dce6e3b5cc",
+    "title": "CH340C",
+    "description": "",
+    "docType": 2,
+    "type": 3,
+    "thumb": "//image.easyeda.com/components/8b8f2c4b0f1a4c05b9bf99dce6e3b5cc.png",
+    "szlcsc": {
+      "id": 85852,
+      "number": "C84681",
+      "step": 1,
+      "min": 1,
+      "price": 2.25,
+      "stock": 63893,
+      "url": "http://www.szlcsc.com/product/details_85852.html",
+      "image": "https://assets.lcsc.com/images/szlcsc/96x96/Jiangsu-Qin-Heng-CH340C_C84681_front_10.jpg"
+    },
+    "lcsc": {
+      "id": 85852,
+      "number": "C84681",
+      "step": 1,
+      "min": 1,
+      "price": 0.3535,
+      "stock": 17584,
+      "url": "https://lcsc.com/product-detail/USB_CH340C_C84681.html"
+    },
+    "owner": {
+      "uuid": "0819f05c4eef4c71ace90d822a990e87",
+      "username": "LCSC",
+      "nickname": "LCSC",
+      "avatar": "//image.lceda.cn/avatars/2018/6/kFlrasi7W06gTdBLAqW3fkrqbDhbowynuSzkjqso.png"
+    },
+    "tags": [
+      "USB ICs"
+    ],
+    "updateTime": 1733477755,
+    "updated_at": "2026-07-18 04:54:42",
+    "dataStr": {
+      "head": {
+        "docType": "2",
+        "editorVersion": "6.5.37",
+        "c_para": {
+          "pre": "U?",
+          "name": "CH340C",
+          "package": "SOP-16_L10.0-W3.9-P1.27-LS6.0-BL",
+          "Supplier": "LCSC",
+          "Manufacturer": 

@@ -1,0 +1,43 @@
+{
+  "success": true,
+  "code": 0,
+  "result": {
+    "uuid": "5c31be170d43458aac5950475928a473",
+    "title": "FS8205A_C2830320",
+    "description": "",
+    "docType": 2,
+    "type": 3,
+    "thumb": "//image.lceda.cn/components/5c31be170d43458aac5950475928a473.png",
+    "lcsc": {
+      "id": 2981993,
+      "number": "C2830320"
+    },
+    "szlcsc": {
+      "id": 2981993,
+      "number": "C2830320"
+    },
+    "owner": {
+      "uuid": "0819f05c4eef4c71ace90d822a990e87",
+      "username": "LCSC",
+      "nickname": "LCSC",
+      "avatar": "//image.lceda.cn/avatars/2018/6/kFlrasi7W06gTdBLAqW3fkrqbDhbowynuSzkjqso.png"
+    },
+    "tags": [
+      "MOSFETs"
+    ],
+    "updateTime": 1731400516,
+    "updated_at": "2026-07-18 04:45:17",
+    "dataStr": {
+      "head": {
+        "docType": "2",
+        "editorVersion": "6.4.19.5",
+        "x": 400,
+        "y": 300,
+        "c_para": {
+          "pre": "Q?",
+          "name": "FS8205A_C2830320",
+          "package": "SOT-23-6_L2.9-W1.6-P0.95-LS2.8-BR",
+          "Contributor": "LCSC",
+          "Supplier": "LCSC",
+          "Supplier Part": "C2830320",
+          "Manufacturer": 

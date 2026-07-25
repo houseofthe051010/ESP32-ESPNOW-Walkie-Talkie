@@ -1,0 +1,43 @@
+{
+  "success": true,
+  "code": 0,
+  "result": {
+    "uuid": "906918f208bf46c7af6af1256c5c5b8d",
+    "title": "MAX98357AETE+T",
+    "description": "",
+    "docType": 2,
+    "type": 3,
+    "thumb": "//image.lceda.cn/components/906918f208bf46c7af6af1256c5c5b8d.png",
+    "lcsc": {
+      "id": 978950,
+      "number": "C910544"
+    },
+    "szlcsc": {
+      "id": 978950,
+      "number": "C910544"
+    },
+    "owner": {
+      "uuid": "0819f05c4eef4c71ace90d822a990e87",
+      "username": "LCSC",
+      "nickname": "LCSC",
+      "avatar": "//image.lceda.cn/avatars/2018/6/kFlrasi7W06gTdBLAqW3fkrqbDhbowynuSzkjqso.png"
+    },
+    "tags": [
+      "Audio Power OpAmps"
+    ],
+    "updateTime": 1732388375,
+    "updated_at": "2026-07-18 04:26:30",
+    "dataStr": {
+      "head": {
+        "docType": "2",
+        "editorVersion": "6.4.17",
+        "x": 400,
+        "y": 300,
+        "c_para": {
+          "pre": "U?",
+          "name": "MAX98357AETE+T",
+          "package": "TQFN-16_L3.0-W3.0-P0.50-BL-EP1.5",
+          "Contributor": "LCSC",
+          "Supplier": "LCSC",
+          "Supplier Part": "C910544",
+          "Manufacturer": 

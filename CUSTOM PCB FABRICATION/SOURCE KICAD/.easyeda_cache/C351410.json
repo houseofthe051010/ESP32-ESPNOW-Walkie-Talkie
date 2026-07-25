@@ -1,0 +1,53 @@
+{
+  "success": true,
+  "code": 0,
+  "result": {
+    "uuid": "846646c1b9e048a8a0cc1de5c79bfb8f",
+    "title": "DW01A_C351410",
+    "description": "",
+    "docType": 2,
+    "type": 3,
+    "thumb": "//image.lceda.cn/components/846646c1b9e048a8a0cc1de5c79bfb8f.png",
+    "lcsc": {
+      "id": 327628,
+      "number": "C351410",
+      "step": 10,
+      "min": 10,
+      "price": 0.0488,
+      "stock": 2960,
+      "url": "https://lcsc.com/product-detail/Others_PUOLOP-DW01_C351410.html"
+    },
+    "szlcsc": {
+      "id": 327628,
+      "number": "C351410",
+      "step": 10,
+      "min": 10,
+      "price": 0.288662,
+      "stock": 15840,
+      "url": "http://www.szlcsc.com/product/details_327628.html"
+    },
+    "owner": {
+      "uuid": "0819f05c4eef4c71ace90d822a990e87",
+      "username": "LCSC",
+      "nickname": "LCSC",
+      "avatar": "//image.lceda.cn/avatars/2018/6/kFlrasi7W06gTdBLAqW3fkrqbDhbowynuSzkjqso.png"
+    },
+    "tags": [
+      "Battery Management ICs"
+    ],
+    "updateTime": 1740984693,
+    "updated_at": "2026-07-18 04:49:21",
+    "dataStr": {
+      "head": {
+        "docType": "2",
+        "editorVersion": "6.3.12",
+        "x": 400,
+        "y": 300,
+        "c_para": {
+          "pre": "U?",
+          "name": "DW01A_C351410",
+          "package": "SOT-23-6_L2.9-W1.6-P0.95-LS2.8-BL",
+          "Contributor": "LCSC",
+          "Supplier": "LCSC",
+          "Supplier Part": "C351410",
+          "Manufacturer": 

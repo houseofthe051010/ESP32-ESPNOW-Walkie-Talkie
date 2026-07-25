@@ -1,0 +1,16 @@
+Board,References,Qty,Manufacturer Part,LCSC,Assembly,Notes
+Main,U1,1,ESP32-WROOM-32U-N4,C328062,SMT,4 MB ESP32 module with factory U.FL/IPEX antenna socket
+Main,J1,1,TYPE-C-31-M-12,C165948,SMT,16-pin USB-C receptacle
+Main,U4,1,CH340C,C84681,SMT,USB-to-UART; no external crystal required
+Main,U5,1,TP4056,C20199357,SMT,Low-cost ESOP-8 1-cell 4.2 V charger
+Main,U6,1,DW01A,C351410,SMT,Single-cell protection controller
+Main,Q1,1,FS8205A,C2830320,SMT,Back-to-back battery protection MOSFETs
+Main,U3,1,ME6211C33M5G-N,C82942,SMT,3.3 V regulator dedicated to CH340C
+Main,U7,1,TPS63031DSKR,C15516,SMT,"Fixed 3.3 V, 900 mA buck-boost for ESP32 and front board"
+Main,U8,1,MAX98357AETE+T,C910544,SMT,"3.2 W I2S class-D amplifier, TQFN-16"
+Main,J3,1,AFC01-S16FCC-00,C262272,SMT,16-pin 0.5 mm bottom-contact FFC connector
+Front,J201,1,AFC01-S16FCC-00,C262272,SMT,16-pin 0.5 mm bottom-contact FFC connector
+Front,SW201-SW205,5,TS-1088R-02026,C455280,SMT,4 x 3 mm SMD tactile switch
+Front,U202,1,INMP441ACEZ,C9900011556,SMT,LGA-9 I2S microphone; Standard PCBA/private stock may be required
+Front,U201,1,HS96L03W2C03,C5248080,Wave/Standard,0.96-inch 128x64 I2C OLED; wave-solder/high-difficulty assembly
+Main,J4-J8,5,Solder wire pads,N/A,Hand solder,"Potentiometer, speaker, PTT, LED and laser"

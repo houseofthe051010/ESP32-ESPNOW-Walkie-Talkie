@@ -1,0 +1,53 @@
+{
+  "success": true,
+  "code": 0,
+  "result": {
+    "uuid": "241193a4d1a4456cbb075b64c202ecb2",
+    "title": "AFC01-S16FCC-00",
+    "description": "",
+    "docType": 2,
+    "type": 3,
+    "thumb": "//image.easyeda.com/components/241193a4d1a4456cbb075b64c202ecb2.png",
+    "lcsc": {
+      "id": 253656,
+      "number": "C262272",
+      "step": 5,
+      "min": 5,
+      "price": 0.0966,
+      "stock": 30,
+      "url": "https://lcsc.com/product-detail/Others_JUSHUO-AFC01-S16FCC-00_C262272.html"
+    },
+    "szlcsc": {
+      "id": 253656,
+      "number": "C262272",
+      "step": 5,
+      "min": 5,
+      "price": 0.537566,
+      "stock": 6923,
+      "url": "http://www.szlcsc.com/product/details_253656.html"
+    },
+    "owner": {
+      "uuid": "0819f05c4eef4c71ace90d822a990e87",
+      "username": "LCSC",
+      "nickname": "LCSC",
+      "avatar": "//image.lceda.cn/avatars/2018/6/kFlrasi7W06gTdBLAqW3fkrqbDhbowynuSzkjqso.png"
+    },
+    "tags": [
+      "FFC/FPC Connectors"
+    ],
+    "updateTime": 1704941195,
+    "updated_at": "2026-07-18 04:49:34",
+    "dataStr": {
+      "head": {
+        "docType": "2",
+        "editorVersion": "6.3.15",
+        "x": 415,
+        "y": 305,
+        "c_para": {
+          "pre": "FPC?",
+          "name": "AFC01-S16FCC-00",
+          "package": "FPC-SMD_P0.50-16P_FGS-XJ-H2.0",
+          "Contributor": "LCSC",
+          "Supplier": "LCSC",
+          "Supplier Part": "C262272",
+          "Manufacturer": 

@@ -1,0 +1,53 @@
+{
+  "success": true,
+  "code": 0,
+  "result": {
+    "uuid": "86378e8d830940f5ac4496fc89058f0a",
+    "title": "TS-1088R-02026",
+    "description": "",
+    "docType": 2,
+    "type": 3,
+    "thumb": "//image.lceda.cn/components/86378e8d830940f5ac4496fc89058f0a.png",
+    "lcsc": {
+      "id": 457635,
+      "number": "C455280",
+      "step": 10,
+      "min": 10,
+      "price": 0.0424,
+      "stock": 2830,
+      "url": "https://lcsc.com/product-detail/New-Arrivals_XUNPU-TS-1088R-02026_C455280.html"
+    },
+    "szlcsc": {
+      "id": 457635,
+      "number": "C455280",
+      "step": 10,
+      "min": 10,
+      "price": 0.279662,
+      "stock": 13930,
+      "url": "http://www.szlcsc.com/product/details_457635.html"
+    },
+    "owner": {
+      "uuid": "0819f05c4eef4c71ace90d822a990e87",
+      "username": "LCSC",
+      "nickname": "LCSC",
+      "avatar": "//image.lceda.cn/avatars/2018/6/kFlrasi7W06gTdBLAqW3fkrqbDhbowynuSzkjqso.png"
+    },
+    "tags": [
+      "Tactile Switches"
+    ],
+    "updateTime": 1704426924,
+    "updated_at": "2026-07-18 04:47:32",
+    "dataStr": {
+      "head": {
+        "docType": "2",
+        "editorVersion": "6.3.10",
+        "x": 400,
+        "y": 300,
+        "c_para": {
+          "pre": "SW?",
+          "name": "TS-1088R-02026",
+          "package": "SW-SMD_L3.9-W3.0-P4.45",
+          "Contributor": "LCSC",
+          "Supplier": "LCSC",
+          "Supplier Part": "C455280",
+          "Manufacturer": 

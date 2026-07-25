@@ -1,0 +1,796 @@
+{
+    "$schema": "https://schemas.kicad.org/erc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-07-25T14:56:25",
+    "ignored_checks": [
+        {
+            "description": "Global label only appears once in the schematic",
+            "key": "single_global_label"
+        },
+        {
+            "description": "Four connection points are joined together",
+            "key": "four_way_junction"
+        },
+        {
+            "description": "SPICE model issue",
+            "key": "simulation_model_issue"
+        },
+        {
+            "description": "Assigned footprint doesn't match footprint filters",
+            "key": "footprint_filter"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning"
+    ],
+    "kicad_version": "10.0.4",
+    "sheets": [
+        {
+            "path": "/",
+            "uuid_path": "/9458acd1-2079-4807-b74a-7340fddcb78f",
+            "violations": [
+                {
+                    "description": "Pins of type Unspecified and Unspecified are connected",
+                    "items": [
+                        {
+                            "description": "Symbol J201 Pin 1 [1, Unspecified, Line]",
+                            "pos": {
+                                "x": 0.381,
+                                "y": 0.4318
+                            },
+                            "uuid": "d06a4f6f-3313-4a26-85f7-483c61c09a14"
+                        },
+                        {
+                            "description": "Symbol J201 Pin 3 [3, Unspecified, Line]",
+                            "pos": {
+                                "x": 0.381,
+                                "y": 0.4826
+                            },
+                            "uuid": "f96199eb-a05c-4c58-9b52-54ab89ed11ab"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Unspecified and Unspecified are connected",
+                    "items": [
+                        {
+                            "description": "Symbol J201 Pin 2 [2, Unspecified, Line]",
+                            "pos": {
+                                "x": 0.381,
+                                "y": 0.4572
+                            },
+                            "uuid": "b6a5ba4e-a2ef-48a3-a038-7ceaf0349233"
+                        },
+                        {
+                            "description": "Symbol J201 Pin 15 [15, Unspecified, Line]",
+                            "pos": {
+                                "x": 0.381,
+                                "y": 0.7874
+                            },
+                            "uuid": "a5be56a8-e096-4ca7-bdc7-68ce9755ca80"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Unspecified and Unspecified are connected",
+                    "items": [
+                        {
+                            "description": "Symbol J201 Pin 3 [3, Unspecified, Line]",
+                            "pos": {
+                                "x": 0.381,
+                                "y": 0.4826
+                            },
+                            "uuid": "f96199eb-a05c-4c58-9b52-54ab89ed11ab"
+                        },
+                        {
+                            "description": "Symbol J201 Pin 18 [18, Unspecified, Line]",
+                            "pos": {
+                                "x": 0.4953,
+                                "y": 0.381
+                            },
+                            "uuid": "1f5c6a04-af0d-41c6-a9bc-6163b7225fdf"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Unspecified and Passive are connected",
+                    "items": [
+                        {
+                            "description": "Symbol J201 Pin 4 [4, Unspecified, Line]",
+                            "pos": {
+                                "x": 0.381,
+                                "y": 0.508
+                            },
+                            "uuid": "84bd9876-94c4-4ac4-afef-10a0c89e2f0d"
+                        },
+                        {
+                            "description": "Symbol R201 Pin 1 [Passive, Line]",
+                            "pos": {
+                                "x": 1.1176,
+                                "y": 0.7747
+                            },
+                            "uuid": "8c10da50-7fec-4a6f-92a6-6502a42038aa"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Unspecified and Unspecified are connected",
+                    "items": [
+                        {
+                            "description": "Symbol J201 Pin 5 [5, Unspecified, Line]",
+                            "pos": {
+                                "x": 0.381,
+                                "y": 0.5334
+                            },
+                            "uuid": "03990225-8af0-4639-a150-cb46985ce6f6"
+                        },
+                        {
+                            "description": "Symbol U201 Pin 4 [SDA, Unspecified, Line]",
+                            "pos": {
+                                "x": 1.2954,
+                                "y": 0.6223
+                            },
+                            "uuid": "44c79331-b6ad-49d4-9e33-e9ad81041985"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Unspecified and Unspecified are connected",
+                    "items": [
+                        {
+                            "description": "Symbol J201 Pin 6 [6, Unspecified, Line]",
+                            "pos": {
+                                "x": 0.381,
+                                "y": 0.5588
+                            },
+                            "uuid": "4d869612-4342-4cb6-aea7-63c3193ab622"
+                        },
+                        {
+                            "description": "Symbol U202 Pin 1 [SCK, Unspecified, Line]",
+                            "pos": {
+                                "x": 0.4318,
+                                "y": 1.2954
+                            },
+                            "uuid": "bc8beb6d-8f96-4228-89db-468c77da02e0"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Unspecified and Unspecified are connected",
+                    "items": [
+                        {
+                            "description": "Symbol J201 Pin 7 [7, Unspecified, Line]",
+                            "pos": {
+                                "x": 0.381,
+                                "y": 0.5842
+                            },
+                            "uuid": "c2a80e75-79ff-47e6-92d0-f01ffe7a0a72"
+                        },
+                        {
+                            "description": "Symbol U202 Pin 3 [WS, Unspecified, Line]",
+                            "pos": {
+                                "x": 0.4318,
+                                "y": 1.3462
+                            },
+                            "uuid": "f7662372-cf25-4f0f-9e63-c8ede288462d"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Unspecified and Unspecified are connected",
+                    "items": [
+                        {
+                            "description": "Symbol J201 Pin 8 [8, Unspecified, Line]",
+                            "pos": {
+                                "x": 0.381,
+                                "y": 0.6096
+                            },
+                            "uuid": "96cf95a0-3787-4e11-bd64-7dcb96391ad5"
+                        },
+                        {
+                            "description": "Symbol U202 Pin 2 [SD, Unspecified, Line]",
+                            "pos": {
+                                "x": 0.4318,
+                                "y": 1.3208
+                            },
+                            "uuid": "660616cd-fad3-4801-8a32-cefabf9a3509"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Unspecified and Unspecified are connected",
+                    "items": [
+                        {
+                            "description": "Symbol J201 Pin 9 [9, Unspecified, Line]",
+                            "pos": {
+                                "x": 0.381,
+                                "y": 0.635
+                            },
+                            "uuid": "0f510407-761f-48ea-90de-4780b239321e"
+                        },
+                        {
+                            "description": "Symbol SW201 Pin 1 [1, Unspecified, Line]",
+                            "pos": {
+                                "x": 1.1049,
+                                "y": 1.3335
+                            },
+                            "uuid": "0f6187bd-77b8-4903-9d21-51b8bce4f5c6"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Unspecified and Unspecified are connected",
+                    "items": [
+                        {
+                            "description": "Symbol J201 Pin 10 [10, Unspecified, Line]",
+                            "pos": {
+                                "x": 0.381,
+                                "y": 0.6604
+                            },
+                            "uuid": "9024bb55-0449-4a6c-b13c-4b02c77d5d52"
+                        },
+                        {
+                            "description": "Symbol SW202 Pin 1 [1, Unspecified, Line]",
+                            "pos": {
+                                "x": 1.397,
+                                "y": 1.3335
+                            },
+                            "uuid": "9023f393-21cc-4db5-8b52-f94e126c4c4f"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Unspecified and Unspecified are connected",
+                    "items": [
+                        {
+                            "description": "Symbol J201 Pin 11 [11, Unspecified, Line]",
+                            "pos": {
+                                "x": 0.381,
+                                "y": 0.6858
+                            },
+                            "uuid": "4892b93b-95ae-4b31-8020-05cf31d859eb"
+                        },
+                        {
+                            "description": "Symbol SW203 Pin 1 [1, Unspecified, Line]",
+                            "pos": {
+                                "x": 1.7018,
+                                "y": 1.3335
+                            },
+                            "uuid": "7b4294f5-6fb6-455e-bc1e-f2fe136da535"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Unspecified and Unspecified are connected",
+                    "items": [
+                        {
+                            "description": "Symbol J201 Pin 12 [12, Unspecified, Line]",
+                            "pos": {
+                                "x": 0.381,
+                                "y": 0.7112
+                            },
+                            "uuid": "3fe84953-b16f-4510-a34a-ef853148d28c"
+                        },
+                        {
+                            "description": "Symbol SW204 Pin 1 [1, Unspecified, Line]",
+                            "pos": {
+                                "x": 1.2446,
+                                "y": 1.5748
+                            },
+                            "uuid": "e7d8804a-081d-4fce-a30d-f5aa7a0ae6f3"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Unspecified and Unspecified are connected",
+                    "items": [
+                        {
+                            "description": "Symbol J201 Pin 13 [13, Unspecified, Line]",
+                            "pos": {
+                                "x": 0.381,
+                                "y": 0.7366
+                            },
+                            "uuid": "9bb9564a-4843-4102-bbd6-8df32af17108"
+                        },
+                        {
+                            "description": "Symbol SW205 Pin 1 [1, Unspecified, Line]",
+                            "pos": {
+                                "x": 1.6002,
+                                "y": 1.5748
+                            },
+                            "uuid": "6e62df74-5078-4f42-b1f1-ea25d5d2369c"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Unspecified and Unspecified are connected",
+                    "items": [
+                        {
+                            "description": "Symbol J201 Pin 14 [14, Unspecified, Line]",
+                            "pos": {
+                                "x": 0.381,
+                                "y": 0.762
+                            },
+                            "uuid": "a37aae7e-28b3-4d1a-ac48-4d81390b6382"
+                        },
+                        {
+                            "description": "Symbol J201 Pin 16 [16, Unspecified, Line]",
+                            "pos": {
+                                "x": 0.381,
+                                "y": 0.8128
+                            },
+                            "uuid": "24c4f170-8c78-4992-bcb5-c853391c734b"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Unspecified and Unspecified are connected",
+                    "items": [
+                        {
+                            "description": "Symbol J201 Pin 15 [15, Unspecified, Line]",
+                            "pos": {
+                                "x": 0.381,
+                                "y": 0.7874
+                            },
+                            "uuid": "a5be56a8-e096-4ca7-bdc7-68ce9755ca80"
+                        },
+                        {
+                            "description": "Symbol U202 Pin 8 [CHIPEN, Unspecified, Line]",
+                            "pos": {
+                                "x": 0.6604,
+                                "y": 1.3335
+                            },
+                            "uuid": "ccf19880-1e5c-4dbf-a6c9-885ed74cbf05"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Unspecified and Unspecified are connected",
+                    "items": [
+                        {
+                            "description": "Symbol J201 Pin 16 [16, Unspecified, Line]",
+                            "pos": {
+                                "x": 0.381,
+                                "y": 0.8128
+                            },
+                            "uuid": "24c4f170-8c78-4992-bcb5-c853391c734b"
+                        },
+                        {
+                            "description": "Symbol J201 Pin 17 [17, Unspecified, Line]",
+                            "pos": {
+                                "x": 0.4953,
+                                "y": 0.8636
+                            },
+                            "uuid": "e2adecd6-8771-4d50-b311-5804756397fb"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Unspecified and Unspecified are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U202 Pin 4 [L/R, Unspecified, Line]",
+                            "pos": {
+                                "x": 0.4318,
+                                "y": 1.3716
+                            },
+                            "uuid": "19f2ea84-ca73-4b26-8080-a20cd9e48a07"
+                        },
+                        {
+                            "description": "Symbol U202 Pin 5 [GND, Unspecified, Line]",
+                            "pos": {
+                                "x": 0.4318,
+                                "y": 1.397
+                            },
+                            "uuid": "a1d6906c-c745-4f94-92b8-8a387bec3fb3"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Unspecified and Passive are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U202 Pin 5 [GND, Unspecified, Line]",
+                            "pos": {
+                                "x": 0.4318,
+                                "y": 1.397
+                            },
+                            "uuid": "a1d6906c-c745-4f94-92b8-8a387bec3fb3"
+                        },
+                        {
+                            "description": "Symbol C204 Pin 1 [Passive, Line]",
+                            "pos": {
+                                "x": 0.4445,
+                                "y": 1.5494
+                            },
+                            "uuid": "668a6de6-ae86-4844-bfc5-37b6a984de3e"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Unspecified and Unspecified are connected",
+                    "items": [
+                        {
+                            "description": "Symbol J201 Pin 18 [18, Unspecified, Line]",
+                            "pos": {
+                                "x": 0.4953,
+                                "y": 0.381
+                            },
+                            "uuid": "1f5c6a04-af0d-41c6-a9bc-6163b7225fdf"
+                        },
+                        {
+                            "description": "Symbol U201 Pin 1 [GND, Unspecified, Line]",
+                            "pos": {
+                                "x": 1.2954,
+                                "y": 0.5461
+                            },
+                            "uuid": "566f9d0f-c789-4c1f-8ad2-bb2753f1c1b8"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Unspecified and Unspecified are connected",
+                    "items": [
+                        {
+                            "description": "Symbol J201 Pin 17 [17, Unspecified, Line]",
+                            "pos": {
+                                "x": 0.4953,
+                                "y": 0.8636
+                            },
+                            "uuid": "e2adecd6-8771-4d50-b311-5804756397fb"
+                        },
+                        {
+                            "description": "Symbol U202 Pin 9 [GND, Unspecified, Line]",
+                            "pos": {
+                                "x": 0.6604,
+                                "y": 1.3081
+                            },
+                            "uuid": "65906165-c86c-4a74-a9e5-1715fe458922"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Unspecified and Passive are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U202 Pin 9 [GND, Unspecified, Line]",
+                            "pos": {
+                                "x": 0.6604,
+                                "y": 1.3081
+                            },
+                            "uuid": "65906165-c86c-4a74-a9e5-1715fe458922"
+                        },
+                        {
+                            "description": "Symbol C204 Pin 1 [Passive, Line]",
+                            "pos": {
+                                "x": 0.4445,
+                                "y": 1.5494
+                            },
+                            "uuid": "668a6de6-ae86-4844-bfc5-37b6a984de3e"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Unspecified and Passive are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U202 Pin 8 [CHIPEN, Unspecified, Line]",
+                            "pos": {
+                                "x": 0.6604,
+                                "y": 1.3335
+                            },
+                            "uuid": "ccf19880-1e5c-4dbf-a6c9-885ed74cbf05"
+                        },
+                        {
+                            "description": "Symbol C204 Pin 2 [Passive, Line]",
+                            "pos": {
+                                "x": 0.5207,
+                                "y": 1.5494
+                            },
+                            "uuid": "6bce38ce-343c-4577-ba77-a4749d67ec74"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Unspecified and Unspecified are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U202 Pin 7 [VDD, Unspecified, Line]",
+                            "pos": {
+                                "x": 0.6604,
+                                "y": 1.3589
+                            },
+                            "uuid": "a880ebb5-d61a-4b91-b131-4a6eecabd8ce"
+                        },
+                        {
+                            "description": "Symbol U202 Pin 8 [CHIPEN, Unspecified, Line]",
+                            "pos": {
+                                "x": 0.6604,
+                                "y": 1.3335
+                            },
+                            "uuid": "ccf19880-1e5c-4dbf-a6c9-885ed74cbf05"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Unspecified and Unspecified are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U202 Pin 6 [GND, Unspecified, Line]",
+                            "pos": {
+                                "x": 0.6604,
+                                "y": 1.3843
+                            },
+                            "uuid": "c8523238-62ee-43d0-81b2-5063deacdd75"
+                        },
+                        {
+                            "description": "Symbol U202 Pin 9 [GND, Unspecified, Line]",
+                            "pos": {
+                                "x": 0.6604,
+                                "y": 1.3081
+                            },
+                            "uuid": "65906165-c86c-4a74-a9e5-1715fe458922"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Unspecified and Unspecified are connected",
+                    "items": [
+                        {
+                            "description": "Symbol SW201 Pin 2 [2, Unspecified, Line]",
+                            "pos": {
+                                "x": 1.2065,
+                                "y": 1.3335
+                            },
+                            "uuid": "3accaa63-4242-4688-b627-ff7215152463"
+                        },
+                        {
+                            "description": "Symbol SW204 Pin 2 [2, Unspecified, Line]",
+                            "pos": {
+                                "x": 1.3462,
+                                "y": 1.5748
+                            },
+                            "uuid": "40357b7f-7a9a-4b4d-ad46-354b7871e6ef"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Unspecified and Passive are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U201 Pin 1 [GND, Unspecified, Line]",
+                            "pos": {
+                                "x": 1.2954,
+                                "y": 0.5461
+                            },
+                            "uuid": "566f9d0f-c789-4c1f-8ad2-bb2753f1c1b8"
+                        },
+                        {
+                            "description": "Symbol C201 Pin 1 [Passive, Line]",
+                            "pos": {
+                                "x": 1.5113,
+                                "y": 0.7747
+                            },
+                            "uuid": "3da86d53-a404-4572-8297-f00465719b71"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Unspecified and Passive are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U201 Pin 2 [VCC, Unspecified, Line]",
+                            "pos": {
+                                "x": 1.2954,
+                                "y": 0.5715
+                            },
+                            "uuid": "0aaa46e6-29f8-4d86-a5a1-08dcf19782ba"
+                        },
+                        {
+                            "description": "Symbol R202 Pin 2 [Passive, Line]",
+                            "pos": {
+                                "x": 1.3843,
+                                "y": 0.7747
+                            },
+                            "uuid": "3cd77b6e-e719-4767-9fca-4e43c50ec104"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Unspecified and Passive are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U201 Pin 3 [SCL, Unspecified, Line]",
+                            "pos": {
+                                "x": 1.2954,
+                                "y": 0.5969
+                            },
+                            "uuid": "89256ab9-4e0b-4713-85ab-324090250a06"
+                        },
+                        {
+                            "description": "Symbol R201 Pin 1 [Passive, Line]",
+                            "pos": {
+                                "x": 1.1176,
+                                "y": 0.7747
+                            },
+                            "uuid": "8c10da50-7fec-4a6f-92a6-6502a42038aa"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Unspecified and Passive are connected",
+                    "items": [
+                        {
+                            "description": "Symbol U201 Pin 4 [SDA, Unspecified, Line]",
+                            "pos": {
+                                "x": 1.2954,
+                                "y": 0.6223
+                            },
+                            "uuid": "44c79331-b6ad-49d4-9e33-e9ad81041985"
+                        },
+                        {
+                            "description": "Symbol R202 Pin 1 [Passive, Line]",
+                            "pos": {
+                                "x": 1.3081,
+                                "y": 0.7747
+                            },
+                            "uuid": "ad1c745e-7ccf-4371-a127-98a8375c9e3f"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Unspecified and Unspecified are connected",
+                    "items": [
+                        {
+                            "description": "Symbol SW204 Pin 2 [2, Unspecified, Line]",
+                            "pos": {
+                                "x": 1.3462,
+                                "y": 1.5748
+                            },
+                            "uuid": "40357b7f-7a9a-4b4d-ad46-354b7871e6ef"
+                        },
+                        {
+                            "description": "Symbol SW205 Pin 2 [2, Unspecified, Line]",
+                            "pos": {
+                                "x": 1.7018,
+                                "y": 1.5748
+                            },
+                            "uuid": "af327122-efb1-4656-86bf-67e07feeddef"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Unspecified and Unspecified are connected",
+                    "items": [
+                        {
+                            "description": "Symbol SW202 Pin 2 [2, Unspecified, Line]",
+                            "pos": {
+                                "x": 1.4986,
+                                "y": 1.3335
+                            },
+                            "uuid": "1f9c2067-7a9a-4af6-bbea-15a173e65e45"
+                        },
+                        {
+                            "description": "Symbol SW204 Pin 2 [2, Unspecified, Line]",
+                            "pos": {
+                                "x": 1.3462,
+                                "y": 1.5748
+                            },
+                            "uuid": "40357b7f-7a9a-4b4d-ad46-354b7871e6ef"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Unspecified and Passive are connected",
+                    "items": [
+                        {
+                            "description": "Symbol SW205 Pin 2 [2, Unspecified, Line]",
+                            "pos": {
+                                "x": 1.7018,
+                                "y": 1.5748
+                            },
+                            "uuid": "af327122-efb1-4656-86bf-67e07feeddef"
+                        },
+                        {
+                            "description": "Symbol C202 Pin 1 [Passive, Line]",
+                            "pos": {
+                                "x": 1.7145,
+                                "y": 0.7747
+                            },
+                            "uuid": "a4e8741c-4a4d-4fef-8e1c-83096219ce08"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "description": "Pins of type Unspecified and Unspecified are connected",
+                    "items": [
+                        {
+                            "description": "Symbol SW203 Pin 2 [2, Unspecified, Line]",
+                            "pos": {
+                                "x": 1.8034,
+                                "y": 1.3335
+                            },
+                            "uuid": "d38cdb0c-04a1-41c0-92c4-362d0fa5dd57"
+                        },
+                        {
+                            "description": "Symbol SW205 Pin 2 [2, Unspecified, Line]",
+                            "pos": {
+                                "x": 1.7018,
+                                "y": 1.5748
+                            },
+                            "uuid": "af327122-efb1-4656-86bf-67e07feeddef"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                }
+            ]
+        }
+    ],
+    "source": "WalkieTalkie_Front.kicad_sch"
+}

@@ -1,0 +1,54 @@
+{
+  "success": true,
+  "code": 0,
+  "result": {
+    "uuid": "df8405e2fa0e40a984c435ad4c8d5cf3",
+    "title": "TYPE-C-31-M-12",
+    "description": "",
+    "docType": 2,
+    "type": 3,
+    "thumb": "//image.easyeda.com/components/df8405e2fa0e40a984c435ad4c8d5cf3.png",
+    "lcsc": {
+      "id": 177331,
+      "number": "C165948",
+      "step": 1,
+      "min": 1,
+      "price": 0.3127,
+      "stock": 3121,
+      "url": "https://lcsc.com/product-detail/USB-Type-C_Korean-Hroparts-Elec-TYPE-C-31-M-12_C165948.html"
+    },
+    "szlcsc": {
+      "id": 177331,
+      "number": "C165948",
+      "step": 1,
+      "min": 1,
+      "price": 1.74,
+      "stock": 1479,
+      "url": "http://www.szlcsc.com/product/details_177331.html",
+      "image": "https://assets.lcsc.com/images/szlcsc/96x96/TYPE-C-31-M-12-Female-16P-SMD_C165948_front_10.jpg"
+    },
+    "owner": {
+      "uuid": "0819f05c4eef4c71ace90d822a990e87",
+      "username": "LCSC",
+      "nickname": "LCSC",
+      "avatar": "//image.lceda.cn/avatars/2018/6/kFlrasi7W06gTdBLAqW3fkrqbDhbowynuSzkjqso.png"
+    },
+    "tags": [
+      "USB Connectors"
+    ],
+    "updateTime": 1757297676,
+    "updated_at": "2026-07-18 04:55:17",
+    "dataStr": {
+      "head": {
+        "docType": "2",
+        "editorVersion": "6.5.51",
+        "x": 530,
+        "y": 315,
+        "c_para": {
+          "pre": "USBC?",
+          "name": "TYPE-C-31-M-12",
+          "package": "USB-C_SMD-TYPE-C-31-M-12_1",
+          "Contributor": "LCSC",
+          "Supplier": "LCSC",
+          "Supplier Part": "C165948",
+          "Manufacturer": 

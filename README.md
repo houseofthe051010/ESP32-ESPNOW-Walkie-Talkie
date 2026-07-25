@@ -396,7 +396,6 @@ There is multiple processing steps inside the firmware in order to make ESP-NOW 
 
 ## Bill of Materials
 
-This table matches [BOM.csv](BOM.csv). Prices are AliExpress USD prices checked July 23, 2026, exclude shipping and tax, and may vary by option, account, and region. Multipack rows show the cost for the quantity used by this build. The enclosure price is a solid-volume estimate derived from the checked-in STL geometry using a PLA density of 1.24 g/cm³ and filament priced at $10.14/kg; normal infill can cost less.
 
 | Category | Quantity | Part | Link | Price |
 |---|---:|---|---|---:|
@@ -424,3 +423,8 @@ This table matches [BOM.csv](BOM.csv). Prices are AliExpress USD prices checked 
 | Optional fabricated | As needed | Brackets and mounts | [PLA filament](https://www.aliexpress.us/item/3256806989098121.html) | $10.14 allowance (1 kg PLA spool) |
 
 
+## Custom PCB Fabrication Option
+
+If you want to avoid soldering a large bundle of point-to-point wires, you can build the walkie-talkie around custom fabricated PCBs instead of hand-wiring every module. The custom PCB path is meant to reduce wiring mess, improve reliability, and make the inside of the casing much easier to assemble.
+
+See [CUSTOM PCB FABRICATION/README.md](CUSTOM%20PCB%20FABRICATION/README.md) for the JLCPCB fabrication workflow, what files to upload, what JLCPCB can assemble, and what parts you still need to buy and solder yourself.

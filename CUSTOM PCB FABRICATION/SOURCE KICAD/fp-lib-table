@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "WalkieTalkie_JLCPCB")(type "KiCad")(uri "${KIPRJMOD}/WalkieTalkie_JLCPCB.pretty")(options "")(descr "JLCPCB/LCSC footprints imported for the WalkieTalkie project"))
+)
