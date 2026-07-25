@@ -7,7 +7,7 @@ Source:
 
 
 
-## Project Description
+## The Project
 
 This is a ESP32 walkie talkie that uses WIFi (ESPNOW) for long range communication. It uses the esp32-wroom-32-U with an external U.fl connector, OLED 0.96 I2C display, I2S INMP441 microphone, I2S MAX98357A 3W speaker amplifier, 10k volume potentiometer, PTT button + 5 menu buttons, LASER, and LED. The aim of this walkie talkie was to not just serve as a walkie talkie, but sort of like a custom flipper zero that was more wireless oriented, although the walkie talkie comes with 3 female dupont pins that can be plugged in externally for a UART connection.
 
@@ -17,16 +17,14 @@ This device was framed as a walkie talkie but it can be used as a Wi-Fi/IoT devi
 
 ### Features
 
-* Peer-to-peer ESP-NOW voice communications without any router or access point.
-* ESP32 with external antenna hardware for better distance compared with boards with PCB antenna.
-* Configuration of ESP-NOW radio for long distance use with maximal ESP32 TX power and ESP32 LR PHY peer rate settings.
-* Designed for up to 1 mile distance in line-of-sight in outdoor conditions, actual distance will depend heavily on antenna placement, interference, obstacles, body shielding and battery voltage.
-* 16 kHz mono voice capture with IMA ADPCM compression, so each 20 ms of voice is captured and compressed in one ESP-NOW packet.
-* Packet jitter buffer and packet loss concealment to reduce jitters when packets are received unevenly.
-* Weak link redundancy which duplicates packets at distance with bad range and de-duplicates received packets to make range testing easier.
-* Inbuilt flash range telemetry with JSON data collection to log range test without computer attached in the field.
-* OLED interface for channels, link, signal, battery, volume, RX/PTT status, application menu, settings, lights control and kid mode.
-* Firmware, wiring information, build pictures and CAD documentation to fork and evolve this project.
+* ESP-NOW DIRECT VOICE (No router needed, multiple devices can connect)
+* U.FL antenna for maximum range
+* Tested to 600 meters of distance
+* No acknowledge on ESPNOW, just shout and listen
+* 16 kHz mono voice capture with IMA ADPCM compression
+* No acknowledgement can be a problem with dropped packets so at weak ranges packets are automatically duplicated
+* Built in black box logging with telemetry that can be uploaded to computer.
+* OLED GUI with many features to control the walkie talkie and use as a remote for other wifi things.
 
 
 
@@ -37,7 +35,7 @@ This device was framed as a walkie talkie but it can be used as a Wi-Fi/IoT devi
 
 ## Walkie Talkie Hardware
 
-The enclosure was designed to have enough space to solder every wire, but a custom PCB version was also made.
+The enclosure was designed to have enough space to solder every wire, but a custom PCB version was also made, scroll all the way down to learn more about fabricating PCB.
 
 <p align="center">
   <img src="Assets/readme/grey-walkie-only.jpg" alt="Grey ESP32 walkie talkie" width="420">
@@ -46,23 +44,22 @@ The enclosure was designed to have enough space to solder every wire, but a cust
 
 ### Electronics
 
-* ESP32-U type development board with 240 MHz CPU, 4 MB flash memory, ~512 KB of internal SRAM, Wi-Fi, Bluetooth hardware and external antenna connection.
-* OLED display for full interface.
-* I2S digital microphone for voice input.
-* I2S output feeding MAX9875A type speaker amplifier.
-* Speaker included in 3D-printed enclosure.
-* Volume potentiometer.
-* Reclaimed 3.85 V lithium battery pack with capacity of about 2000 mAh.
-* 6 GPIO push buttons for PTT, OK button, navigation and applications/settings.
-* LED light for status and TX indication.
-* Laser module operated on 3.3 V as manual output and part of lights app.
-* Voltage divider to feed ADC pin for battery voltage measurement.
+* ESP32WROOM32 U.FL
+* OLED I2C 0.96'
+* I2S INMP441 MIC
+* 10K Volume potentiometer.
+* 2000 MAH LIPO
+* 6 push buttons
+* 5mm LED light
+* 5V laser module
+* Voltage divider for ADC battery voltage measurment
+* Main power switch
 
 ## Assembly Process
 
 ### 1. Printed enclosure
 
-The enclosure was printed from the following parts in [`SOURCE CAD/INDIVIDUAL STLS`](SOURCE%20CAD/INDIVIDUAL%20STLS):
+All these parts contribute to the final product
 
 * [`walkie_talkie_bottom_case.stl`](SOURCE%20CAD/INDIVIDUAL%20STLS/walkie_talkie_bottom_case.stl)
 * [`walkie_talkie_top_cover.stl`](SOURCE%20CAD/INDIVIDUAL%20STLS/walkie_talkie_top_cover.stl)
@@ -71,14 +68,11 @@ The enclosure was printed from the following parts in [`SOURCE CAD/INDIVIDUAL ST
 * [`walkie_talkie_PTT_button.stl`](SOURCE%20CAD/INDIVIDUAL%20STLS/walkie_talkie_PTT_button.stl)
 * [`walkie_talkie_PTT_button_insert.stl`](SOURCE%20CAD/INDIVIDUAL%20STLS/walkie_talkie_PTT_button_insert.stl)
 
-The internal hardware consists of the ESP32-U board, external antenna, SSD1306 OLED, I2S microphone, MAX9875A-style amplifier, speaker, volume potentiometer, six pushbuttons, LED, 3.3 V laser, reclaimed 3.85 V battery, TP4056 charging/protection board, 5 V boost converter, power switch, battery-divider resistors, and 32 AWG signal wire.
 
-The printed buttons, OLED, LED, laser, speaker, antenna, and circuit boards were fitted into their dedicated openings. The two USB-C openings align with the ESP32 programming connector and TP4056 charging connector.
 
 ### 2. Power system
 
-The walkie uses the following self-contained battery-power circuit:
-
+The battery powers the TP4056 which gives power to a boost converter than powers the entire device
 ```text
 3.85 V battery
       |
@@ -91,7 +85,7 @@ Main power switch
       |
 5 V boost converter
       |
-ESP32 5V/VIN + amplifier power + OLED power rail
+ESP32 5V/VIN power rail
 ```
 
 1. The reclaimed battery connects to TP4056 `B+` and `B-`.
@@ -186,24 +180,24 @@ The high-level circuit diagram illustrates connections between ESP32, display, I
   <img src="Assets/Walkie%20Talkie%20Circuit%20Diagram.png" alt="Walkie talkie circuit diagram" width="900">
 </p>
 
-### Common Pin Assignment
+### Device PINOUT
 
-| Function             | ESP32 GPIO | Comments                  |
-| -------------------- | ---------: | ------------------------- |
-| OLED SCL             |     GPIO18 | I2C clock                 |
-| OLED SDA             |     GPIO19 | I2C data                  |
-| Speaker BCLK         |     GPIO32 | I2S output bit clock      |
-| Speaker WS/LRC       |     GPIO33 | I2S output word select    |
-| Speaker DIN          |     GPIO25 | I2S output data           |
-| Microphone BCLK      |     GPIO16 | I2S input bit clock       |
-| Microphone WS        |     GPIO17 | I2S input word select     |
-| Microphone SD        |      GPIO4 | I2S input data            |
-| OK button            |      GPIO0 | Active low                |
-| Bottom-left button   |     GPIO14 | Active low                |
-| Bottom-right button  |     GPIO15 | Active low                |
-| Laser                |     GPIO21 | 3.3 V laser module output |
-| Volume potentiometer |     GPIO34 | ADC input                 |
-| Battery divider      |     GPIO35 | ADC input                 |
+| Function             | ESP32 GPIO |
+| -------------------- | ---------: |
+| OLED SCL             |     GPIO18 |
+| OLED SDA             |     GPIO19 |
+| Speaker BCLK         |     GPIO32 |
+| Speaker WS/LRC       |     GPIO33 |
+| Speaker DIN          |     GPIO25 |
+| Microphone BCLK      |     GPIO16 |
+| Microphone WS        |     GPIO17 |
+| Microphone SD        |      GPIO4 |
+| OK button            |      GPIO0 |
+| Bottom-left button   |     GPIO14 |
+| Bottom-right button  |     GPIO15 |
+| Laser                |     GPIO21 |
+| Volume potentiometer |     GPIO34 |
+| Battery divider      |     GPIO35 |
 
 ### Black & Grey Variants Pin Assignment
 
@@ -227,10 +221,10 @@ Default ESP-NOW peer MAC addresses:
 
 Black walkie provides GPIO1 and GPIO3 for `RCAR` app:
 
-| RC car signal                 | Black walkie GPIO | Comments                        |
-| ----------------------------- | ----------------: | ------------------------------- |
-| Left drivetrain servo signal  |  GPIO1 / UART0 TX | 50 Hz PWM signal in `RCAR` mode |
-| Right drivetrain servo signal |  GPIO3 / UART0 RX | 50 Hz PWM signal in `RCAR` mode |
+| RC car signal                 | Black walkie GPIO |
+| ----------------------------- | ----------------: |
+| Left drivetrain servo signal  |  GPIO1 / UART0 TX |
+| Right drivetrain servo signal |  GPIO3 / UART0 RX |
 
 
 ## Internal Build: Grey Walkie
@@ -328,71 +322,6 @@ Example record:
 ```
 
 
-### Audio Transport
-
-The voice frames are sent over ESP-NOW as compressed voice.
-
-* Microphone sample rate: 16 kHz mono;
-* Frame duration: 20 ms;
-* Samples per frame: 320;
-* Compression algorithm: IMA ADPCM with 4 bits per sample;
-* Payload size: 160 bytes per frame;
-* The frame is transmitted in a single packet;
-* Packet rate while PTT is pressed: 50 packets per second;
-* Packets size: 171 bytes;
-
-Fields of audio packet:
-
-| Field         | Size | Description                  |
-| ------------- | ---: | ---------------------------- |
-| Packet type   |    1 | `0xA1` for audio             |
-| Proto ver.    |    1 | Protocol version of firmware |
-| Logical ch.   |    1 | 1 to 20 software channels    |
-| Flags         |    1 | Kid-mode/audio flag          |
-| Sequence      |    2 | Detects ordering and loss    |
-| ADPCM pred.   |    2 | Decoder state of the frame   |
-| ADPCM step    |    1 | Decoder state of step size   |
-| Sample cnt.   |    2 | Usually 320                  |
-| ADPCM payload |  160 | Compressed voice samples     |
-
-Types of control packets:
-
-| Packet        |  Value | Description        |
-| ------------- | -----: | ------------------ |
-| Audio         | `0xA1` | Compressed voice   |
-| Heartbeat     | `0xB1` | Link detection     |
-| Scan request  | `0xB2` | Channel scan       |
-| Scan response | `0xB3` | Channel scan reply |
-
-### Audio Cleanup
-
-There is multiple processing steps inside the firmware in order to make ESP-NOW voice more comprehensible:
-
-* I2S microphone captures use the left channel since microphone L/R pin is tied to ground;
-* Mic warmup discards the first frames after PTT press making the start of the transmission less noisy;
-* High pass filter reduces DC offset and low-frequency rumble;
-* Noise floor tracking helps distinguishing quiet background from voice;
-* Gentle speech gating makes the background less noisy without fully cutting quiet speech;
-* Different mic gain profiles for black and grey board to compensate for their different microphone behaviour;
-* Speaker boost and mic boost settings adjust fixed-point gain inside the firmware;
-* Receive jitter buffer to smooth out the arrival of packets;
-* Packet loss concealment to fill short silence periods due to the missed packet.
-
-## Code Structure
-
-| Path                     | Description                                                                                                                                                                             |
-| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `main/main.c`            | Main application, board select, GPIO, ADC, I2S setup, ESP-NOW, RC car PWM/web/control mode, FreeRTOS tasks, buttons, menus, display, heartbeat, scan, capture, playback, resource stats |
-| `main/walkie_audio.c`    | Microphone cleanup, gain, ADPCM encode/decode, playback scaling, packet loss concealment helpers                                                                                        |
-| `main/walkie_audio.h`    | Audio API common between main application and walkie_audio code                                                                                                                         |
-| `main/walkie_display.c`  | SSD1306 OLED display driver, framebuffer rendering, fonts and all screens                                                                                                               |
-| `main/walkie_display.h`  | Display API                                                                                                                                                                             |
-| `main/walkie_types.h`    | Common board/UI/RC car/settings/lights/snaphot structures                                                                                                                               |
-| `main/Kconfig.projbuild` | Menuconfig options for black/grey board profiles, MAC addresses, RF channel                                                                                                             |
-| `BOM.csv`                | Bill of materials for both walkie-talkie units                                                                                                                                          |
-| `partitions.csv`         | Custom partition table with app and fieldlog partitions                                                                                                                                 |
-| `sdkconfig.defaults`     | Default ESP-IDF project settings                                                                                                                                                        |
-| `CMakeLists.txt`         | Project definition of ESP-IDF                                                                                                                                                           |
 
 ## Bill of Materials
 
@@ -425,6 +354,6 @@ There is multiple processing steps inside the firmware in order to make ESP-NOW 
 
 ## Custom PCB Fabrication Option
 
-If you want to avoid soldering a large bundle of point-to-point wires, you can build the walkie-talkie around custom fabricated PCBs instead of hand-wiring every module. The custom PCB path is meant to reduce wiring mess, improve reliability, and make the inside of the casing much easier to assemble.
+If you want to avoid the hassle of soldering than fabricate your own PCB here: 
 
-See [CUSTOM PCB FABRICATION/README.md](CUSTOM%20PCB%20FABRICATION/README.md) for the JLCPCB fabrication workflow, what files to upload, what JLCPCB can assemble, and what parts you still need to buy and solder yourself.
+See [CUSTOM PCB FABRICATION/README.md](CUSTOM%20PCB%20FABRICATION/README.md) for the JLBPCB fabrication guide
