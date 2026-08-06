@@ -209,8 +209,28 @@ Example of a JSON black box record:
 
 ## Bill of Materials
 
+| Category    | Quantity | Part                                 | Purchase Link                                                      | Estimated Price |
+| ----------- | -------: | ------------------------------------ | ------------------------------------------------------------------ | --------------: |
+| Fabricated  |        2 | Walkie-talkie enclosure              | [AliExpress](https://www.aliexpress.us/item/3256806989098121.html) |           $2.22 |
+| Electronics |        2 | ESP32 development board              | [AliExpress](https://www.aliexpress.us/item/3256807617923920.html) |           $1.90 |
+| Radio       |        2 | External antenna                     | [AliExpress](https://www.aliexpress.us/item/3256812004598286.html) |      $0.64 used |
+| Display     |        2 | 0.96-inch OLED display               | [AliExpress](https://www.aliexpress.us/item/3256805954920554.html) |      $1.98 used |
+| Audio       |        2 | I2S microphone                       | [AliExpress](https://www.aliexpress.us/item/3256810210666726.html) |           $6.45 |
+| Audio       |        2 | I2S speaker amplifier                | [AliExpress](https://www.aliexpress.us/item/3256809715431644.html) |      $1.88 used |
+| Audio       |        2 | Speaker                              | [AliExpress](https://www.aliexpress.us/item/3256805151989671.html) |           $0.99 |
+| Control     |        2 | Volume potentiometer                 | [AliExpress](https://www.aliexpress.us/item/3256805703535495.html) |           $0.99 |
+| Power       |        2 | Lithium battery                      | [AliExpress](https://www.aliexpress.us/item/3256811489152615.html) |     $10.96 used |
+| Power       |        2 | Battery charger and protection board | [AliExpress](https://www.aliexpress.us/item/3256809139500038.html) |      $0.20 used |
+| Power       |        2 | Boost converter                      | [AliExpress](https://www.aliexpress.us/item/3256811757076890.html) |      $1.88 used |
+| Power       |        2 | Main power switch                    | [AliExpress](https://www.aliexpress.us/item/3256809823421130.html) |           $2.37 |
+| Lighting    |        2 | Status LED                           | [AliExpress](https://www.aliexpress.us/item/3256807537207911.html) |      $0.02 used |
+| Lighting    |        2 | Laser module                         | [AliExpress](https://www.aliexpress.us/item/3256808318801769.html) |           $0.99 |
+| Control     |       12 | Momentary pushbutton                 | [AliExpress](https://www.aliexpress.us/item/3256810479380665.html) |           $0.99 |
+| Optional RC |        2 | Continuous-rotation servo            | [AliExpress](https://www.aliexpress.us/item/3256804365417662.html) |           $9.28 |
+| Measurement |        2 | 100 kΩ battery-divider resistor      | [AliExpress](https://www.aliexpress.us/item/3256802303553096.html) |      $0.02 used |
+| Measurement |        2 | 220 kΩ battery-divider resistor      | [AliExpress](https://www.aliexpress.us/item/3256802303553096.html) |      $0.02 used |
+| Wiring      |        1 | Signal and power wire                | [AliExpress](https://www.aliexpress.us/item/3256810394181790.html) | $0.99 allowance |
 
-Look in the BOM CSV file
 
 ## Custom PCB Fabrication Option
 
